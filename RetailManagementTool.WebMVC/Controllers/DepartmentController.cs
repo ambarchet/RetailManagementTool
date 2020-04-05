@@ -1,4 +1,5 @@
-﻿using RetailManagementTool.Models.Department;
+﻿using RetailManagementTool.Data;
+using RetailManagementTool.Models.Department;
 using RetailManagementTool.Services;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace RetailManagementTool.WebMVC.Controllers
 {
     public class DepartmentController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
+
 
         // GET: Department
         public ActionResult Index()
@@ -22,6 +25,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         //CREATE:GET
         public ActionResult Create()
         {
+             //   ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionDescription");
             return View();
         }
         //CREATE:POST
@@ -31,11 +35,12 @@ namespace RetailManagementTool.WebMVC.Controllers
         {
             if (!ModelState.IsValid)
             {
+
                 return View(model);
             }
 
+         //   ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionDescription", model.DepartmentPromotionId);
             var service = new DepartmentService();
-
             service.CreateDepartment(model);
 
             return RedirectToAction("Index");
@@ -60,7 +65,8 @@ namespace RetailManagementTool.WebMVC.Controllers
                 {
                     DepartmentId = detail.DepartmentId,
                     DepartmentNumber = detail.DepartmentNumber,
-                    DepartmentName = detail.DepartmentName
+                    DepartmentName = detail.DepartmentName,
+                    DepartmentPromotionId = detail.DepartmentPromotionId
                 };
             return View(model);
         }

@@ -19,7 +19,7 @@ namespace RetailManagementTool.Models.Department
         public string DepartmentName { get; set; }
 
         [Display(Name = "Department Promotion")]
-        public string PromotionDescription { get; set; }
+        public int? DepartmentPromotionId { get; set; }
 
     }
 }

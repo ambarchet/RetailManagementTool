@@ -130,23 +130,23 @@ namespace RetailManagementTool.WebMVC
               x => x.ZoneName,
               new Zone()
               {
-              ZoneName = "M Hot Zone"
+                  ZoneName = "M Hot Zone"
               },
               new Zone()
               {
-              ZoneName = "M Zone 1"
+                  ZoneName = "M Zone 1"
               },
               new Zone()
               {
-               ZoneName = "M Zone 2"
+                  ZoneName = "M Zone 2"
               },
               new Zone()
               {
-               ZoneName = "M Clearance"
+                  ZoneName = "M Clearance"
               },
               new Zone()
               {
-              ZoneName = "W Hot Zone"
+                  ZoneName = "W Hot Zone"
               },
               new Zone()
               {
@@ -161,6 +161,24 @@ namespace RetailManagementTool.WebMVC
                   ZoneName = "W Clearance"
               }
               );
+            context.SaveChanges();
+
+            context.Promotions.AddOrUpdate
+             (
+             x => x.PromotionDescription,
+             new Promotion()
+             {
+                 PromotionDescription = "No Promo"
+             },
+             new Promotion()
+             {
+                 PromotionDescription = "30% Off"
+             },
+             new Promotion()
+             {
+                 PromotionDescription = "BOGO 50% Off"
+             }
+             );
             context.SaveChanges();
         }
     }

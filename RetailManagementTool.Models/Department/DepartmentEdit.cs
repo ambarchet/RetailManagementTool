@@ -26,7 +26,6 @@ namespace RetailManagementTool.Models.Department
         public string DepartmentName { get; set; }
 
         [Display(Name = "Department Promotion")]
-        [MaxLength(50, ErrorMessage = "There are too many characters in this field.")]
-        public string PromotionDescription { get; set; }
+        public int? DepartmentPromotionId { get; set; }
     }
 }

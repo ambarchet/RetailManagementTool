@@ -20,7 +20,7 @@ namespace RetailManagementTool.Services
         {
             var entity = new Zone()
             {
-                ZoneName = model.ZoneName,
+                ZoneName = model.ZoneName
             };
 
             using (var ctx = new ApplicationDbContext())
