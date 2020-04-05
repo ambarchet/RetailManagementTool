@@ -1,0 +1,34 @@
+﻿@model RetailManagementTool.Models.Size.SizeDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SizeDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SizeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SizeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SizeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SizeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SizeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
