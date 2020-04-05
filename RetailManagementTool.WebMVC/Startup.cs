@@ -124,6 +124,44 @@ namespace RetailManagementTool.WebMVC
                }
                );
             context.SaveChanges();
+
+            context.Zones.AddOrUpdate
+              (
+              x => x.ZoneName,
+              new Zone()
+              {
+              ZoneName = "M Hot Zone"
+              },
+              new Zone()
+              {
+              ZoneName = "M Zone 1"
+              },
+              new Zone()
+              {
+               ZoneName = "M Zone 2"
+              },
+              new Zone()
+              {
+               ZoneName = "M Clearance"
+              },
+              new Zone()
+              {
+              ZoneName = "W Hot Zone"
+              },
+              new Zone()
+              {
+                  ZoneName = "W Zone 1"
+              },
+              new Zone()
+              {
+                  ZoneName = "W Zone 2"
+              },
+              new Zone()
+              {
+                  ZoneName = "W Clearance"
+              }
+              );
+            context.SaveChanges();
         }
     }
 }

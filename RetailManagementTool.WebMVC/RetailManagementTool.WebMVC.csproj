@@ -248,13 +248,17 @@
     <Content Include="Views\Size\Details.cshtml" />
     <Content Include="Views\Size\Edit.cshtml" />
     <Content Include="Views\Size\Delete.cshtml" />
+    <Content Include="Views\Zone\Index.cshtml" />
+    <Content Include="Views\Zone\Create.cshtml" />
+    <Content Include="Views\Zone\Details.cshtml" />
+    <Content Include="Views\Zone\Edit.cshtml" />
+    <Content Include="Views\Zone\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Department\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Views\Promotion\" />
-    <Folder Include="Views\Zone\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
