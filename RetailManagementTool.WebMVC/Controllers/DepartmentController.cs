@@ -24,7 +24,15 @@ namespace RetailManagementTool.WebMVC.Controllers
         //CREATE:GET
         public ActionResult Create()
         {
-           // ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionId");
+            var PromotionsList = new List<SelectListItem>();
+            var PromoQuery = from p in _db.Promotions select p;
+            foreach (var p in PromoQuery)
+            {
+                PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
+            }
+            ViewBag.Promotions = PromotionsList;
+
+            // ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionId");
             return View();
         }
         //CREATE:POST
