@@ -168,15 +168,18 @@ namespace RetailManagementTool.WebMVC
              x => x.PromotionDescription,
              new Promotion()
              {
-                 PromotionDescription = "No Promo"
+                 PromotionDescription = "No Promo",
+                 PromoTypeId = 1
              },
              new Promotion()
              {
-                 PromotionDescription = "30% Off"
+                 PromotionDescription = "30% Off",
+                 PromoTypeId = 1
              },
              new Promotion()
              {
-                 PromotionDescription = "BOGO 50% Off"
+                 PromotionDescription = "BOGO 50% Off",
+                 PromoTypeId = 3
              }
              );
             context.SaveChanges();

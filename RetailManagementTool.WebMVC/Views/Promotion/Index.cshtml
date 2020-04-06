@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.PromotionId)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.PromoType)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PromotionDescription)
         </th>
         <th></th>
@@ -26,10 +29,13 @@
             @Html.DisplayFor(modelItem => item.PromotionId)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.PromoType)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.PromotionDescription)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PromotionId }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.PromotionId}) |
             @Html.ActionLink("Details", "Details", new { id=item.PromotionId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.PromotionId })
         </td>

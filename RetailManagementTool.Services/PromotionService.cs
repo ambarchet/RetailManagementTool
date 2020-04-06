@@ -20,7 +20,8 @@ namespace RetailManagementTool.Services
         {
             var entity = new Promotion()
             {
-                PromotionDescription = model.PromotionDescription
+                PromotionDescription = model.PromotionDescription,
+                PromoTypeId = model.PromoTypeId
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -42,6 +43,7 @@ namespace RetailManagementTool.Services
                                   {
                                       PromotionId = e.PromotionId,
                                       PromotionDescription = e.PromotionDescription,
+                                      PromoType = e.PromoType.Type
                                   }
                                   );
 
@@ -59,6 +61,9 @@ namespace RetailManagementTool.Services
                 {
                     PromotionId = entity.PromotionId,
                     PromotionDescription = entity.PromotionDescription,
+                    PromoTypeId = entity.PromoTypeId,
+                    PromoType = entity.PromoType.Type,
+                    
                 };
             }
         }
@@ -74,6 +79,7 @@ namespace RetailManagementTool.Services
                     .Single(e => e.PromotionId == model.PromotionId);
 
                 entity.PromotionDescription = model.PromotionDescription;
+                entity.PromoTypeId = model.PromoTypeId;
                 return ctx.SaveChanges() == 1;
             }
         }

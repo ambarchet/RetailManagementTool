@@ -14,5 +14,8 @@ namespace RetailManagementTool.Models.Promotion
 
         [Display(Name = "Promotion Description")]
         public string PromotionDescription { get; set; }
+
+        [Display(Name = "Promotion Type")]
+        public string PromoType { get; set; }
     }
 }

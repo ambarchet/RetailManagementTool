@@ -18,5 +18,9 @@ namespace RetailManagementTool.Models.Promotion
         [MaxLength(50, ErrorMessage = "There are too many characters in this field.")]
         [Display(Name = "Promotion Description")]
         public string PromotionDescription { get; set; }
+
+        [Display(Name = "Promotion Type")]
+        public int? PromoTypeId { get; set; }
+
     }
 }

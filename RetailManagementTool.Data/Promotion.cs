@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,10 @@ namespace RetailManagementTool.Data
         [Display(Name = "Promotion Description")]
         public string PromotionDescription { get; set; }
 
+        [Display(Name = "Promotion Type")]
+        [ForeignKey(nameof(PromoType))]
+        public int? PromoTypeId { get; set; }
+        public virtual PromotionType PromoType { get; set; }
+        
     }
 }

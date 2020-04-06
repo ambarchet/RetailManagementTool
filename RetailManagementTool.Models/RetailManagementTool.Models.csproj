@@ -62,6 +62,10 @@
     <Compile Include="Product\ProductDetail.cs" />
     <Compile Include="Product\ProductEdit.cs" />
     <Compile Include="Product\ProductListItem.cs" />
+    <Compile Include="PromotionType\PromotionTypeCreate.cs" />
+    <Compile Include="PromotionType\PromotionTypeDetail.cs" />
+    <Compile Include="PromotionType\PromotionTypeEdit.cs" />
+    <Compile Include="PromotionType\PromotionTypeListItem.cs" />
     <Compile Include="Promotion\PromotionCreate.cs" />
     <Compile Include="Promotion\PromotionDetail.cs" />
     <Compile Include="Promotion\PromotionEdit.cs" />
