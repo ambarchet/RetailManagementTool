@@ -64,7 +64,8 @@ namespace RetailManagementTool.Services
                     DepartmentId = entity.DepartmentId,
                     DepartmentNumber = entity.DepartmentNumber,
                     DepartmentName = entity.DepartmentName,
-                    DepartmentPromotionId = entity.DepartmentPromotionId
+                    DepartmentPromotionId = entity.DepartmentPromotionId,
+                    DepartmentPromotionName = entity.DepartmentPromotion.PromotionDescription
                 };
             }
         }

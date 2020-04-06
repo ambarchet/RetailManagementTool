@@ -30,6 +30,6 @@ namespace RetailManagementTool.Data
         [ForeignKey(nameof(DepartmentPromotion))]
         public int? DepartmentPromotionId { get; set; }
         public virtual Promotion DepartmentPromotion { get; set; }
-        public virtual List<Product> DepartmentProducts { get; set; }
+
     }
 }

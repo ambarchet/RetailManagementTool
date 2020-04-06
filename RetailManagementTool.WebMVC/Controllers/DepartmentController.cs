@@ -13,7 +13,6 @@ namespace RetailManagementTool.WebMVC.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
 
-
         // GET: Department
         public ActionResult Index()
         {
@@ -25,7 +24,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         //CREATE:GET
         public ActionResult Create()
         {
-             //   ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionDescription");
+           // ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionId");
             return View();
         }
         //CREATE:POST
@@ -39,10 +38,8 @@ namespace RetailManagementTool.WebMVC.Controllers
                 return View(model);
             }
 
-         //   ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionDescription", model.DepartmentPromotionId);
             var service = new DepartmentService();
             service.CreateDepartment(model);
-
             return RedirectToAction("Index");
         }
 
@@ -58,6 +55,14 @@ namespace RetailManagementTool.WebMVC.Controllers
         //UPDATE: GET
         public ActionResult Edit(int id)
         {
+            var PromotionsList = new List<SelectListItem>();
+            var PromoQuery = from p in _db.Promotions select p;
+            foreach (var p in PromoQuery)
+            {
+                PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
+            }
+            ViewBag.Promotions = PromotionsList;
+
             var service = new DepartmentService();
             var detail = service.GetDepartmentById(id);
             var model =
@@ -93,6 +98,7 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             ModelState.AddModelError("", "Your department could not be updated.");
             return View(model);
+            
         }
 
         //DELETE
