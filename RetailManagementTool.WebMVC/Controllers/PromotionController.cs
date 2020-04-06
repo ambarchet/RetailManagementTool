@@ -77,7 +77,8 @@ namespace RetailManagementTool.WebMVC.Controllers
                 {
                     PromotionId = detail.PromotionId,
                     PromotionDescription = detail.PromotionDescription,
-                    PromoTypeId = detail.PromoTypeId
+                    PromoTypeId = detail.PromoTypeId,
+                    PromotionValue = detail.PromotionValue
                 };
             return View(model);
         }

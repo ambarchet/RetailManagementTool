@@ -24,6 +24,8 @@ namespace RetailManagementTool.Data
         [ForeignKey(nameof(PromoType))]
         public int? PromoTypeId { get; set; }
         public virtual PromotionType PromoType { get; set; }
+
+        public int PromotionValue { get; set; }
         
     }
 }

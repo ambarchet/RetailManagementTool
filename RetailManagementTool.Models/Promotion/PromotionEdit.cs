@@ -22,5 +22,8 @@ namespace RetailManagementTool.Models.Promotion
         [Display(Name = "Promotion Type")]
         public int? PromoTypeId { get; set; }
 
+        [Display(Name = "Promotion Value")]
+        public int PromotionValue { get; set; }
+
     }
 }
