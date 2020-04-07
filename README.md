@@ -76,3 +76,6 @@ https://stackoverflow.com/questions/14049098/mvc4-razor-drop-down-list-binding-w
 
 <h4>Troubleshooting</h4>
 https://stackoverflow.com/questions/19204979/system-invalidcastexception-unable-to-cast-object-of-type-system-int32-to-typ/19205653
+
+<h4>Multiplying Decimals</h4>
+https://stackoverflow.com/questions/26240428/convert-decimal-to-integer-without-losing-monetary-value
