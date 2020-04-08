@@ -68,6 +68,14 @@
     <Compile Include="Migrations\202004062033030_PromoValue.Designer.cs">
       <DependentUpon>202004062033030_PromoValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004062309584_AddedProduct.cs" />
+    <Compile Include="Migrations\202004062309584_AddedProduct.Designer.cs">
+      <DependentUpon>202004062309584_AddedProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004071559041_SalesPriceUpdate.cs" />
+    <Compile Include="Migrations\202004071559041_SalesPriceUpdate.Designer.cs">
+      <DependentUpon>202004071559041_SalesPriceUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Promotion.cs" />
@@ -89,6 +97,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004062033030_PromoValue.resx">
       <DependentUpon>202004062033030_PromoValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004062309584_AddedProduct.resx">
+      <DependentUpon>202004062309584_AddedProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004071559041_SalesPriceUpdate.resx">
+      <DependentUpon>202004071559041_SalesPriceUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

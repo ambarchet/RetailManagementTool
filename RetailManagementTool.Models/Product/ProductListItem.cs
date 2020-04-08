@@ -27,5 +27,10 @@ namespace RetailManagementTool.Models.Product
 
         [Display(Name = "Promotion")]
         public string PromotionDescription { get; set; }
+
+        [Display(Name = "Promotion Id")]
+        public int? PromotionId { get; set; }
+
+
     }
 }

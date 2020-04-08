@@ -162,7 +162,7 @@ namespace RetailManagementTool.WebMVC
               }
               );
             context.SaveChanges();
-
+/*
             context.Promotions.AddOrUpdate
              (
              x => x.PromotionDescription,
@@ -186,6 +186,7 @@ namespace RetailManagementTool.WebMVC
              }
              );
             context.SaveChanges();
+            */
         }
     }
 }

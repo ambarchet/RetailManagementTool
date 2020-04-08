@@ -12,6 +12,9 @@ namespace RetailManagementTool.Models.Product
         [Display(Name = "Product Id")]
         public int ProductId { get; set; }
 
+        [Display(Name = "Department Id")]
+        public int? DepartmentId { get; set; }
+
         [Display(Name = "Department")]
         public string DepartmentNumber { get; set; }
 
@@ -20,6 +23,9 @@ namespace RetailManagementTool.Models.Product
         public string SKU { get; set; }
 
         public string Color { get; set; }
+
+        [Display(Name = "Size Id")]
+        public int? SizeId { get; set; }
 
         public string Size { get; set; }
 
@@ -30,6 +36,9 @@ namespace RetailManagementTool.Models.Product
         [DataType(DataType.Currency)]
         public decimal TicketPrice { get; set; }
 
+        [Display(Name = "Promotion Id")]
+        public int? PromotionId { get; set; }
+
         [Display(Name = "Promotion")]
         public string PromotionDescription { get; set; }
 
@@ -37,8 +46,17 @@ namespace RetailManagementTool.Models.Product
         [DataType(DataType.Currency)]
         public decimal SalesPrice { get; set; }
 
+        [Display(Name = "Zone Name")]
+        public int? ZoneId { get; set; }
+
         [Display(Name = "Zone")]
         public string ZoneName { get; set; }
+
+
+        [Display(Name = "Individual Sales Price")]
+        [DataType(DataType.Currency)]
+        public decimal IndividualSalesPrice { get; set; }
+
 
     }
 }

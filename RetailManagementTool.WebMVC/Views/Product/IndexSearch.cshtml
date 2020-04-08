@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<RetailManagementTool.Models.Promotion.PromotionListItem>
 
-@{
-    ViewBag.Title = "Index";
+<br />
+<br />
+@using (Html.BeginForm("IndexSearch", "IndexSearch", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="Search" />
 }
-
-<h2>Promotions</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 <table class="table">
     <tr>
@@ -23,8 +21,18 @@
         </th>
         <th></th>
     </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3" style="color:red">
+                No Match For Your Search
+                </td>
+        </tr>
+    }
+    else
+    {
 
-    @foreach (var item in Model)
+    foreach (var item in Model)
     {
         <tr>
             <td>
@@ -43,5 +51,5 @@
             </td>
         </tr>
     }
-
+    }
 </table>

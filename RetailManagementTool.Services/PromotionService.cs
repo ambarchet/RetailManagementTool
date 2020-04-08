@@ -49,11 +49,13 @@ namespace RetailManagementTool.Services
                                   );
 
                 return query.ToArray();
+
+
             }
         }
 
         //GET BY ID
-        public PromotionDetail GetPromotionById(int id)
+        public PromotionDetail GetPromotionById(int? id)
         {
             using (var ctx = new ApplicationDbContext())
             {

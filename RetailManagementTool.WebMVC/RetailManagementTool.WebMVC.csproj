@@ -269,10 +269,17 @@
     <Content Include="Views\Promotion\Details.cshtml" />
     <Content Include="Views\Promotion\Edit.cshtml" />
     <Content Include="Views\Promotion\Delete.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\IndexSearch.cshtml" />
+    <Content Include="Views\Product\ListByDepartmentNumber.cshtml" />
+    <Content Include="Views\Product\EditProductsByDepartment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

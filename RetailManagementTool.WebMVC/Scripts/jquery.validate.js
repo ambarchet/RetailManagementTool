@@ -1460,7 +1460,7 @@ $.extend( $.validator, {
 						return 0;
 					}
 
-					// Number of digits right of decimal point.
+					// Number of digits right of decimals point.
 					return match[ 1 ] ? match[ 1 ].length : 0;
 				},
 				toInt = function( num ) {
