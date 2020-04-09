@@ -20,7 +20,9 @@ namespace RetailManagementTool.Services
         {
             var entity = new Promotion()
             {
-                PromotionDescription = model.PromotionDescription
+                PromotionDescription = model.PromotionDescription,
+                PromoTypeId = model.PromoTypeId,
+                PromotionValue = model.PromotionValue
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -42,15 +44,18 @@ namespace RetailManagementTool.Services
                                   {
                                       PromotionId = e.PromotionId,
                                       PromotionDescription = e.PromotionDescription,
+                                      PromoType = e.PromoType.Type
                                   }
                                   );
 
                 return query.ToArray();
+
+
             }
         }
 
         //GET BY ID
-        public PromotionDetail GetPromotionById(int id)
+        public PromotionDetail GetPromotionById(int? id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -59,6 +64,10 @@ namespace RetailManagementTool.Services
                 {
                     PromotionId = entity.PromotionId,
                     PromotionDescription = entity.PromotionDescription,
+                    PromoTypeId = entity.PromoTypeId,
+                    PromoType = entity.PromoType.Type,
+                    PromotionValue = entity.PromotionValue
+                    
                 };
             }
         }
@@ -74,6 +83,8 @@ namespace RetailManagementTool.Services
                     .Single(e => e.PromotionId == model.PromotionId);
 
                 entity.PromotionDescription = model.PromotionDescription;
+                entity.PromoTypeId = model.PromoTypeId;
+                entity.PromotionValue = model.PromotionValue;
                 return ctx.SaveChanges() == 1;
             }
         }

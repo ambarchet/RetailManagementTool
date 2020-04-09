@@ -12,6 +12,7 @@ namespace RetailManagementTool.WebMVC.Controllers
     [Authorize]
     public class UsersController : Controller
     {
+
         public bool IsAdminUser()
         {
             if (User.Identity.IsAuthenticated)
@@ -31,7 +32,7 @@ namespace RetailManagementTool.WebMVC.Controllers
             }
             return false;
         }
-
+        /*
         // GET: Users
         public ActionResult Index()
         {
@@ -54,6 +55,30 @@ namespace RetailManagementTool.WebMVC.Controllers
             }
             return View();
         }
+        */
+        // GET: Users
+        public ActionResult Index()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+
+            if (User.Identity.IsAuthenticated)
+            {
+
+                if (!IsAdminUser())
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var Users = context.Users.ToList();
+            return View(Users);
+
+        }
+
 
     }
 }

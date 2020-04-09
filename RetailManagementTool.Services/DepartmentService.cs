@@ -83,6 +83,7 @@ namespace RetailManagementTool.Services
                 entity.DepartmentNumber = model.DepartmentNumber;
                 entity.DepartmentName = model.DepartmentName;
                 entity.DepartmentPromotionId = model.DepartmentPromotionId;
+                
 
                 return ctx.SaveChanges() == 1;
             }

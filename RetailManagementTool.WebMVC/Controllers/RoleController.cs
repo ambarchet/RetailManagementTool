@@ -1,16 +1,23 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RetailManagementTool.Services;
 using RetailManagementTool.Data;
+using RetailManagementTool.Models.Role;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.ApplicationServices;
 using System.Web.Mvc;
 
 namespace RetailManagementTool.WebMVC.Controllers
 {
     public class RoleController : Controller
     {
+        ApplicationDbContext context = new ApplicationDbContext();
+
+
         public bool IsAdminUser()
         {
             if (User.Identity.IsAuthenticated)
@@ -31,7 +38,7 @@ namespace RetailManagementTool.WebMVC.Controllers
             return false;
         }
 
-        // GET: Role
+        // GET: Roles
         public ActionResult Index()
         {
             ApplicationDbContext context = new ApplicationDbContext();
@@ -53,5 +60,28 @@ namespace RetailManagementTool.WebMVC.Controllers
             return View(Roles);
 
         }
+
+        //CREATE:GET
+        public ActionResult Create()
+        {
+            return View();
+        }
+        //CREATE:POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(RoleCreate model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var service = new Services.RoleService();
+
+            service.CreateRole(model);
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

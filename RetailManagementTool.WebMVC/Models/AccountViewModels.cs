@@ -117,4 +117,16 @@ namespace RetailManagementTool.WebMVC.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class UserListView
+    {
+        [Display(Name = "User Id")]
+        public string UserId { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        [Display(Name = "User Has Active Account?")]
+        public IList<string> UserRoles { get; set; }
+    }
+
 }

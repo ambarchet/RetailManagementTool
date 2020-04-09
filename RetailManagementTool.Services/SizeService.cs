@@ -1,4 +1,6 @@
-﻿using RetailManagementTool.Data;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using RetailManagementTool.Data;
 using RetailManagementTool.Models.Size;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,7 @@ namespace RetailManagementTool.Services
         //CREATE
         public bool CreateSize(SizeCreate model)
         {
+
             var entity = new Size()
             {
                 SizeName = model.SizeName,

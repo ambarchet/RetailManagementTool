@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Promotion Details</h2>
 
 <div>
     <h4>PromotionDetail</h4>
@@ -24,6 +24,30 @@
 
         <dd>
             @Html.DisplayFor(model => model.PromotionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromoTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromoTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromoType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromoType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionValue)
         </dd>
 
     </dl>

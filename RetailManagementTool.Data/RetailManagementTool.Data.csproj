@@ -56,8 +56,34 @@
   <ItemGroup>
     <Compile Include="Department.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202004050052491_InitialCreate.cs" />
+    <Compile Include="Migrations\202004050052491_InitialCreate.Designer.cs">
+      <DependentUpon>202004050052491_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004061745218_InitialMigration.cs" />
+    <Compile Include="Migrations\202004061745218_InitialMigration.Designer.cs">
+      <DependentUpon>202004061745218_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004062033030_PromoValue.cs" />
+    <Compile Include="Migrations\202004062033030_PromoValue.Designer.cs">
+      <DependentUpon>202004062033030_PromoValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004062309584_AddedProduct.cs" />
+    <Compile Include="Migrations\202004062309584_AddedProduct.Designer.cs">
+      <DependentUpon>202004062309584_AddedProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004071559041_SalesPriceUpdate.cs" />
+    <Compile Include="Migrations\202004071559041_SalesPriceUpdate.Designer.cs">
+      <DependentUpon>202004071559041_SalesPriceUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004090242036_UserRoles.cs" />
+    <Compile Include="Migrations\202004090242036_UserRoles.Designer.cs">
+      <DependentUpon>202004090242036_UserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Promotion.cs" />
+    <Compile Include="PromotionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Zone.cs" />
@@ -65,6 +91,26 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004050052491_InitialCreate.resx">
+      <DependentUpon>202004050052491_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004061745218_InitialMigration.resx">
+      <DependentUpon>202004061745218_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004062033030_PromoValue.resx">
+      <DependentUpon>202004062033030_PromoValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004062309584_AddedProduct.resx">
+      <DependentUpon>202004062309584_AddedProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004071559041_SalesPriceUpdate.resx">
+      <DependentUpon>202004071559041_SalesPriceUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004090242036_UserRoles.resx">
+      <DependentUpon>202004090242036_UserRoles.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

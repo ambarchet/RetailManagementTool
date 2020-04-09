@@ -1,0 +1,71 @@
+﻿@model IEnumerable<RetailManagementTool.Models.Product.ProductListItem>
+
+@{
+    ViewBag.Title = "ListByDepartmentNumber";
+}
+
+    <h2>
+        Products in Department 
+    </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Style)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SKU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZoneName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromotionDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Style)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SKU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZoneName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PromotionDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>

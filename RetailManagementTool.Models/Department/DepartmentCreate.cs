@@ -23,6 +23,5 @@ namespace RetailManagementTool.Models.Department
 
         [Display(Name = "Department Promotion Id")]
         public int? DepartmentPromotionId { get; set; }
-
     }
 }

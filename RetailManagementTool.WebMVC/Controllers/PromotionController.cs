@@ -1,4 +1,5 @@
-﻿using RetailManagementTool.Models.Promotion;
+﻿using RetailManagementTool.Data;
+using RetailManagementTool.Models.Promotion;
 using RetailManagementTool.Services;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace RetailManagementTool.WebMVC.Controllers
 {
     public class PromotionController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: Promotion
         public ActionResult Index()
         {
@@ -21,6 +24,15 @@ namespace RetailManagementTool.WebMVC.Controllers
         //CREATE:GET
         public ActionResult Create()
         {
+            var PromotionTypesList = new List<SelectListItem>();
+            var PromotionTypeQuery = from p in _db.PromotionTypes select p;
+            foreach (var p in PromotionTypeQuery)
+            {
+                PromotionTypesList.Add(new SelectListItem { Value = p.PromotionTypeId.ToString(), Text = p.Type });
+            }
+            ViewBag.PromotionTypes = PromotionTypesList;
+
+
             return View();
         }
         //CREATE:POST
@@ -34,9 +46,7 @@ namespace RetailManagementTool.WebMVC.Controllers
             }
 
             var service = new PromotionService();
-
             service.CreatePromotion(model);
-
             return RedirectToAction("Index");
         }
 
@@ -52,6 +62,14 @@ namespace RetailManagementTool.WebMVC.Controllers
         //UPDATE: GET
         public ActionResult Edit(int id)
         {
+            var PromotionTypesList = new List<SelectListItem>();
+            var PromotionTypeQuery = from p in _db.PromotionTypes select p;
+            foreach (var p in PromotionTypeQuery)
+            {
+                PromotionTypesList.Add(new SelectListItem { Value = p.PromotionTypeId.ToString(), Text = p.Type });
+            }
+            ViewBag.PromotionTypes = PromotionTypesList;
+
             var service = new PromotionService();
             var detail = service.GetPromotionById(id);
             var model =
@@ -59,6 +77,8 @@ namespace RetailManagementTool.WebMVC.Controllers
                 {
                     PromotionId = detail.PromotionId,
                     PromotionDescription = detail.PromotionDescription,
+                    PromoTypeId = detail.PromoTypeId,
+                    PromotionValue = detail.PromotionValue
                 };
             return View(model);
         }

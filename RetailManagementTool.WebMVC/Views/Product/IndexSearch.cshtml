@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RetailManagementTool.Models.Promotion.PromotionListItem>
+
+<br />
+<br />
+@using (Html.BeginForm("IndexSearch", "IndexSearch", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="Search" />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PromotionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromotionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromoType)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3" style="color:red">
+                No Match For Your Search
+                </td>
+        </tr>
+    }
+    else
+    {
+
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromotionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromotionDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromoType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PromotionId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PromotionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PromotionId })
+            </td>
+        </tr>
+    }
+    }
+</table>
