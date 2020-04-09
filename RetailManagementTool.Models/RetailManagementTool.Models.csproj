@@ -72,6 +72,8 @@
     <Compile Include="Promotion\PromotionEdit.cs" />
     <Compile Include="Promotion\PromotionListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role\RoleCreate.cs" />
+    <Compile Include="Role\RoleListItem.cs" />
     <Compile Include="Size\SizeCreate.cs" />
     <Compile Include="Size\SizeDetail.cs" />
     <Compile Include="Size\SizeEdit.cs" />

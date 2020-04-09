@@ -242,7 +242,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\IndexOld.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Size\Index.cshtml" />
     <Content Include="Views\Size\Create.cshtml" />
@@ -276,7 +276,8 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\IndexSearch.cshtml" />
     <Content Include="Views\Product\ListByDepartmentNumber.cshtml" />
-    <Content Include="Views\Product\EditProductsByDepartment.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

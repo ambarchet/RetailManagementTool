@@ -42,7 +42,7 @@ namespace RetailManagementTool.Models.Product
         [Display(Name = "Promotion")]
         public string PromotionDescription { get; set; }
 
-        [Display(Name = "Sales Price")]
+        [Display(Name = "Promotion Price")]
         [DataType(DataType.Currency)]
         public decimal SalesPrice { get; set; }
 
@@ -53,9 +53,13 @@ namespace RetailManagementTool.Models.Product
         public string ZoneName { get; set; }
 
 
-        [Display(Name = "Individual Sales Price")]
+        [Display(Name = "Promotion Price")]
         [DataType(DataType.Currency)]
         public decimal IndividualSalesPrice { get; set; }
+
+
+        [Display(Name = "Promotion")]
+        public string DepartmentPromotionDescription { get; set; }
 
 
     }

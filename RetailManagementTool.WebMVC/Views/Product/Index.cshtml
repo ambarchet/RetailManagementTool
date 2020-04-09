@@ -9,10 +9,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<p>
-    @Html.TextBox("searching")
-    <input type="submit" value="Search" />
-</p>
+<div>
+    @using (Html.BeginForm("Index", "Product"))
+    {
+        <input type="text" name="SKU" />
+        <input type="submit" value="Search SKU" />
+    }
+</div>
 
 
 <table class="table">
@@ -74,3 +77,6 @@
     }
 
 </table>
+
+@Html.ActionLink("Back to List", "Index")
+

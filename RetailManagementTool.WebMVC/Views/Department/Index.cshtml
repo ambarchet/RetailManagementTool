@@ -44,7 +44,6 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentId }) |
             @Html.ActionLink("Details", "Details", new { id = item.DepartmentId }) |
             @Html.ActionLink("See Related Products", "ListByDepartmentNumber", "Product", new { id = item.DepartmentId }, htmlAttributes: new { @class = "btn" }) |
-            @Html.ActionLink("Edit Promo Products", "EditProductsByDepartment", "Product", new { id = item.DepartmentId }, htmlAttributes: new { @class = "btn" }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentId })
         </td>
     </tr>

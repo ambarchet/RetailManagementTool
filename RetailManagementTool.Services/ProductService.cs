@@ -57,14 +57,36 @@ namespace RetailManagementTool.Services
                                       ProductName = e.ProductName,
                                       ZoneName = e.ProductZone.ZoneName,
                                       PromotionDescription = e.ProductPromotion.PromotionDescription,
-                                      //PromotionDescription = CalculatePromotionDescription(e.ProductPromotion, e.ProductDepartment),
                                       PromotionId = e.ProductPromotionId
                                   }
+                                       
                                   );
-
                 return query.ToList();
             }
         }
+
+        //GET ALL
+        public IEnumerable<ProductListItem> GetProductBySKU(string SKU)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Products.Where(e => e.SKU == SKU).Select(e => new ProductListItem
+                     {
+                         ProductId = e.ProductId,
+                         DepartmentNumber = e.ProductDepartment.DepartmentNumber,
+                         Style = e.Style,
+                         SKU = e.SKU,
+                         ProductName = e.ProductName,
+                         ZoneName = e.ProductZone.ZoneName,
+                         PromotionDescription = e.ProductPromotion.PromotionDescription,
+                         PromotionId = e.ProductPromotionId
+                     });
+
+                return query.ToList();                  
+            }
+        }
+
 
         //GET BY ID
         public ProductDetail GetProductById(int id)
@@ -94,6 +116,7 @@ namespace RetailManagementTool.Services
                     IndividualSalesPrice = CalculateIndividualSalesPrice(entity.TicketPrice, entity.ProductPromotion),
                     ZoneId = entity.ProductZoneId,
                     ZoneName = entity.ProductZone.ZoneName,
+                    DepartmentPromotionDescription = entity.ProductDepartment.DepartmentPromotion.PromotionDescription
                 };
             }
         }
@@ -124,25 +147,8 @@ namespace RetailManagementTool.Services
             }
         }
 
-        //Update List of Products
-        public IEnumerable<ProductListItem> UpdateListOfProducts(ProductPromoEdit model)//IEnumerable<ProductListItem> listOfProducts, int promotionId)  you may need a model that will have listOfProducts and a promotion ID in it.
-        {
-            //foreach through list of products, and change the Promotion.PromotionType.Id to the new promotionId
-            using (var ctx = new ApplicationDbContext())
-            {
-                foreach (var product in model.ProductsInDepartment)//listOfProducts    change to model.ProductsInDepartment)
-                {
-                    var productToChange = ctx.Products.Where(e => e.ProductId == product.ProductId).FirstOrDefault();
-                    if (productToChange != null)
-                    {
-                        productToChange.ProductPromotionId = model.PromotionId;
-                    }
-                }
-                ctx.SaveChanges();
-                return model.ProductsInDepartment;
-            }
 
-        }
+
         //UPDATE
         public bool UpdateProduct(ProductEdit model)
         {
@@ -267,22 +273,23 @@ namespace RetailManagementTool.Services
     
 
 /*
-        private decimal CalculateSalesPrice(decimal ticketPrice, Promotion promotion)
+        //Update List of Products
+        public IEnumerable<ProductListItem> UpdateListOfProducts(ProductPromoEdit model)//IEnumerable<ProductListItem> listOfProducts, int promotionId)  you may need a model that will have listOfProducts and a promotion ID in it.
         {
-            switch (promotion.PromoType.Type)
-
+            //foreach through list of products, and change the Promotion.PromotionType.Id to the new promotionId
+            using (var ctx = new ApplicationDbContext())
             {
-                case "No Promo":
-
-                    return ticketPrice;
-                case "Percent Off":
-                    return (ticketPrice * (100 - promotion.PromotionValue) / 100);
-                case "New Dollar Amount":
-                    return promotion.PromotionValue;
-
-
-                default:
-                    return ticketPrice;
+                foreach (var product in model.ProductsInDepartment)//listOfProducts    change to model.ProductsInDepartment)
+                {
+                    var productToChange = ctx.Products.Where(e => e.ProductId == product.ProductId).FirstOrDefault();
+                    if (productToChange != null)
+                    {
+                        productToChange.ProductPromotionId = model.PromotionId;
+                    }
+                }
+                ctx.SaveChanges();
+                return model.ProductsInDepartment;
             }
+
         }
         */

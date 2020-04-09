@@ -13,7 +13,7 @@ namespace RetailManagementTool.WebMVC.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
         // GET: Department
-        public ActionResult Index()
+        public ActionResult Index(string SKU)
         {
             {
                /*
@@ -37,10 +37,16 @@ namespace RetailManagementTool.WebMVC.Controllers
                             }
                       */      
             }
-
             var service = new ProductService();
+
+            if (SKU == null)
+            {
             var model = service.GetProducts();
             return View(model);
+            }
+
+            var query = service.GetProductBySKU(SKU);
+                return View(query);
         }
 
             /*
@@ -117,100 +123,6 @@ namespace RetailManagementTool.WebMVC.Controllers
             var model = service.GetProductsByDepartment(id);
             return View(model);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //UPDATE: GET
-        public ActionResult EditProductsByDepartment(int id)
-        {
-            // put a dropdown for promotions in here
-
-            var PromotionsList = new List<SelectListItem>();
-            var PromotionQuery = from p in _db.Promotions select p;
-            foreach (var p in PromotionQuery)
-            {
-                PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
-            }
-            ViewBag.Promotions = PromotionsList;
-
-            //{
-            //ProductList =  service.GetProductsByDepartment(id);
-            //}
-            var service = new ProductService();
-            //new up a Model()
-            var listitem = service.GetProductsByDepartment(id);
-           // return View(listitem);
-
-            var model =
-                new ProductPromoEdit
-                {
-                    ProductsInDepartment = listitem,
-                    PromotionId = id,
-                };
-            return View(model);
-
-
-            // assign the value of the list of products to the list that our getProductsByDepartment returns
-            // we'll set the value for the promotion in our view
-        }
-        //UpdateByDeptPost
-        //take in our new model that should have the same list, and the promotion Id that we selected
-        //pass that model into our service method that will change the promotion Id for each object in that list
-        //return the view for the model after calling the update method
-        //UPDATE: POST
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditProductsByDepartment(int id, ProductPromoEdit model)
-        {
-
-            var service = new ProductService();
-            var promoedit = service.UpdateListOfProducts(model);
-
-            return View(promoedit);
-
-
-            TempData["SaveResult"] = "Your product was updated.";
-            return RedirectToAction("Index");
-
-            /*
-            if (!ModelState.IsValid) return View(model);
-
-            if (model.ProductId != id)
-            {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(model);
-            }
-
-            var service = new ProductService();
-
-            if (service.UpdateProduct(model))
-            {
-                TempData["SaveResult"] = "Your product was updated.";
-                return RedirectToAction("Index");
-            }
-
-            ModelState.AddModelError("", "Your product could not be updated.");
-            return View(model);
-            */
-
-
-
-
-
-
-        }
-
 
         //UPDATE: GET
         public ActionResult Edit(int id)
@@ -316,3 +228,45 @@ namespace RetailManagementTool.WebMVC.Controllers
 
     }
 }
+            /*
+        //UPDATE: GET
+        public ActionResult EditProductsByDepartment(int id)
+        {
+            // put a dropdown for promotions in here
+
+            var PromotionsList = new List<SelectListItem>();
+            var PromotionQuery = from p in _db.Promotions select p;
+            foreach (var p in PromotionQuery)
+            {
+                PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
+            }
+            ViewBag.Promotions = PromotionsList;
+
+            var service = new ProductService();
+            var listitem = service.GetProductsByDepartment(id);
+
+            var model =
+                new ProductPromoEdit
+                {
+                    ProductsInDepartment = listitem,
+                    PromotionId = id,
+                };
+            return View(model);
+
+
+        }
+        //UPDATE: POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProductsByDepartment(int id, ProductPromoEdit model)
+        {
+
+            var service = new ProductService();
+            var promoedit = service.UpdateListOfProducts(model);
+
+            return View(promoedit);
+
+
+            TempData["SaveResult"] = "Your product was updated.";
+            return RedirectToAction("Index");
+            */

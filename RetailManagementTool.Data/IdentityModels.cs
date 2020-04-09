@@ -65,7 +65,7 @@ namespace RetailManagementTool.Data
     {
         public IdentityUserRoleConfiguration()
         {
-            HasKey(iur => iur.UserId);
+            HasKey(iur => new { iur.UserId, iur.RoleId });
         }
     }
 }

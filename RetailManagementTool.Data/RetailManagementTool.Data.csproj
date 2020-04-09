@@ -76,6 +76,10 @@
     <Compile Include="Migrations\202004071559041_SalesPriceUpdate.Designer.cs">
       <DependentUpon>202004071559041_SalesPriceUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004090242036_UserRoles.cs" />
+    <Compile Include="Migrations\202004090242036_UserRoles.Designer.cs">
+      <DependentUpon>202004090242036_UserRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Promotion.cs" />
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004071559041_SalesPriceUpdate.resx">
       <DependentUpon>202004071559041_SalesPriceUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004090242036_UserRoles.resx">
+      <DependentUpon>202004090242036_UserRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
