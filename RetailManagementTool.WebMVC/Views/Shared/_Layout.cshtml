@@ -17,36 +17,39 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("RMT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Create New<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Create a Department", "Create", "Department", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Create a Product", "Create", "Product", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Create a Promotion", "Create", "Promotion", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Create a Size", "Create", "Size", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Create a Zone", "Create", "Zone", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Create a Promotion Type", "Create", "PromotionType", null, new { /*id = "item "*/ })</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Look Up <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Departments", "Index", "Department", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Products", "Index", "Product", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Promotions", "Index", "Promotion", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Sizes", "Index", "Size", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Zones", "Index", "Zone", null, new { /*id = "item "*/ })</li>
-                            <li>@Html.ActionLink("Promotion Types", "Index", "PromotionType", null, new { /*id = "item "*/ })</li>
-                        </ul>
-                    </li>
-                        </ul>
+                    @if (User.IsInRole("Admin"))
+                    { 
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Create New<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Create a Department", "Create", "Department", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Create a Product", "Create", "Product", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Create a Promotion", "Create", "Promotion", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Create a Size", "Create", "Size", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Create a Zone", "Create", "Zone", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Create a Promotion Type", "Create", "PromotionType", null, new { /*id = "item "*/ })</li>
+                            </ul>
+                        </li>
+                    }
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Look Up <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Departments", "Index", "Department", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Products", "Index", "Product", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Promotions", "Index", "Promotion", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Sizes", "Index", "Size", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Zones", "Index", "Zone", null, new { /*id = "item "*/ })</li>
+                                <li>@Html.ActionLink("Promotion Types", "Index", "PromotionType", null, new { /*id = "item "*/ })</li>
+                            </ul>
+                        </li>
+                    </ul>
                         @Html.Partial("_LoginPartial")
 </div>
         </div>

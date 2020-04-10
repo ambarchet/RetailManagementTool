@@ -5,10 +5,12 @@
 }
 
 <h2>Products</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <div>
     @using (Html.BeginForm("Index", "Product"))
     {
@@ -39,46 +41,55 @@
             @Html.DisplayNameFor(model => model.ZoneName)
         </th>
         <th>
-          @*
-            @Html.DisplayNameFor(model => model.PromotionDescription)
-          *@
+            @*
+                @Html.DisplayNameFor(model => model.PromotionDescription)
+            *@
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartmentNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Style)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SKU)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZoneName)
-            </td>
-            <td>
-                @Html.HiddenFor(modelItem => item.PromotionDescription)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DepartmentNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Style)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SKU)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ZoneName)
+    </td>
+    <td>
+        @Html.HiddenFor(modelItem => item.PromotionDescription)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+        </td>
+    }
+</tr>
     }
 
 </table>
 
-@Html.ActionLink("Back to List", "Index")
+@Html.ActionLink("Full List", "Index")
 

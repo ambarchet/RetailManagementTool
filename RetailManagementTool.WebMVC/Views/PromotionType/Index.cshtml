@@ -6,9 +6,12 @@
 
 <h2>Promotion Types</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -20,20 +23,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PromotionTypeId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
         <td>
-            @Html.DisplayFor(modelItem => item.PromotionTypeId)
+            @Html.ActionLink("Edit", "Edit", new { id = item.PromotionTypeId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PromotionTypeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PromotionTypeId })
         </td>
+    }
+    else
+    {
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
+            @Html.ActionLink("Details", "Details", new { id = item.PromotionTypeId })
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PromotionTypeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PromotionTypeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PromotionTypeId })
-        </td>
-    </tr>
-}
+    }
+</tr>
+    }
 
 </table>

@@ -11,6 +11,7 @@ namespace RetailManagementTool.WebMVC.Controllers
     public class SizeController : Controller
     {
         // GET: Size
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
             var service = new SizeService();
@@ -19,6 +20,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //CREATE:GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -41,6 +43,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //GET BY ID
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int id)
         {
             var service = new SizeService();
@@ -50,6 +53,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //UPDATE: GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var service = new SizeService();
@@ -88,6 +92,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //DELETE
+        [Authorize(Roles = "Admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {

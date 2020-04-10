@@ -14,6 +14,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Department
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
             var service = new DepartmentService();
@@ -22,6 +23,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //CREATE:GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             var PromotionsList = new List<SelectListItem>();
@@ -52,6 +54,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //GET BY ID
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int id)
         {
             var service = new DepartmentService();
@@ -61,6 +64,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //UPDATE: GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var PromotionsList = new List<SelectListItem>();
@@ -110,6 +114,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //DELETE
+        [Authorize(Roles = "Admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {

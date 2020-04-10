@@ -121,6 +121,34 @@ namespace RetailManagementTool.Services
             }
         }
 
+        public ProductEditDetail GetProductForEdit(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Products.Single(e => e.ProductId == id);
+
+
+                return new ProductEditDetail
+                {
+                    ProductId = entity.ProductId,
+                    DepartmentId = entity.ProductDepartmentId,
+                    DepartmentNumber = entity.ProductDepartment.DepartmentNumber,
+                    Style = entity.Style,
+                    SKU = entity.SKU,
+                    ProductName = entity.ProductName,
+                    Color = entity.Color,
+                    SizeId = entity.ProductSizeId,
+                    Size = entity.ProductSize.SizeName,
+                    TicketPrice = entity.TicketPrice,
+                    PromotionId = entity.ProductPromotionId,
+                    PromotionDescription = entity.ProductPromotion.PromotionDescription,
+                    ZoneId = entity.ProductZoneId,
+                    ZoneName = entity.ProductZone.ZoneName,
+                };
+            }
+        }
+
+
         //GET My Bids
         public IEnumerable<ProductListItem> GetProductsByDepartment(int id)
         {
@@ -222,9 +250,9 @@ namespace RetailManagementTool.Services
 
                         return ticketPrice;
                     case "Percent Off":
-                        return (ticketPrice * (100 - promotion.PromotionValue) / 100);
+                        return (ticketPrice * (100 - promotion.PromoValue) / 100);
                     case "New Dollar Amount":
-                        return promotion.PromotionValue;
+                        return promotion.PromoValue;
 
 
                     default:

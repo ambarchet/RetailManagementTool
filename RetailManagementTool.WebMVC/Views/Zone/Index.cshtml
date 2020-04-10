@@ -6,9 +6,12 @@
 
 <h2>Zones</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -20,20 +23,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZoneId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZoneName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ZoneId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ZoneId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ZoneId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZoneId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZoneName)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ZoneId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ZoneId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ZoneId })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ZoneId })
+                </td>
+            }
+        </tr>
+    }
 
 </table>

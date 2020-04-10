@@ -6,9 +6,12 @@
 
 <h2>Sizes</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -20,20 +23,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.SizeId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SizeName)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
         <td>
-            @Html.DisplayFor(modelItem => item.SizeId)
+            @Html.ActionLink("Edit", "Edit", new { id = item.SizeId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.SizeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.SizeId })
         </td>
+    }
+    else
+    {
         <td>
-            @Html.DisplayFor(modelItem => item.SizeName)
+            @Html.ActionLink("Details", "Details", new { id = item.SizeId })
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SizeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SizeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SizeId })
-        </td>
-    </tr>
-}
+    }
+</tr>
+    }
 
 </table>
