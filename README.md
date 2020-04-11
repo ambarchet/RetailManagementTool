@@ -9,16 +9,15 @@
 <h4>Product</h4>
 <ul>
   <li>int Id [pk]</li>
-  <li>int Department [Foreign Key of Department Id]</li>
-  <li>string SKU</li>
+  <li>int Department [Foreign Key of DepartmentId]</li>
   <li>string Style</li>
-  <li>string Color</li>
-  <li>int Size [Foreign Key of Size Id]</li>
+  <li>string SKU</li>
   <li>string Name</li>
+  <li>string Color</li>
+  <li>int Size [Foreign Key of SizeId]</li>
   <li>decimal TicketPrice</li>
-  <li>decimal SalesPrice</li>
-  <li>int Promotion [Foreign Key of Promotion Id]</li>
-  <li>int ZoneLocation [Foreign Key of Zone Id]</li>
+  <li>int Promotion [Foreign Key of PromotionId]</li>
+  <li>int Zone [Foreign Key of ZoneId]</li>
 </ul>
 
 <h4>Department</h4>
@@ -27,7 +26,7 @@
   <li>string DepartmentNumber</li>
   <li>string DepartmentName</li>
   <li>int Promotion [Foreign Key of Promotion Id]</li>
-  <li>List<Product> DepartmentProducts</li>
+  <li>virtual ICollection<Product> ProductsInDepartment</li>
 </ul>
 
 <h4>Zone</h4>
@@ -39,13 +38,41 @@
 <h4>Promotion</h4>
 <ul>
   <li>int Id[pk]</li>
-  <li>string Description</li>
+  <li>string PromotionDescription</li>
+  <li>int PromoTypeId [Foreign Key of PromotionTypeId]
+  <li>decimal PromoValue
+</ul>
+
+<h4>PromotionType</h4>
+<ul>
+  <li>int Id[pk]</li>
+  <li>string Type</li>
 </ul>
 
 <h4>Size</h4>
 <ul>
   <li>int Id [pk]</li>
+  <li>string SizeName</li>
+</ul>
+
+<h4>ApplicationUser</h4>
+<ul>
+  <li>guid Id [pk]</li>
+  <li>string email</li>
+  <li>string password</li>
+  <li>string UserName</li>
+</ul>
+
+<h4>IdentityRole</h4>
+<ul>
+  <li>guid Id [pk]</li>
   <li>string Name</li>
+</ul>
+
+<h4>IdentityUserRole</h4>
+<ul>
+  <li>UserId guid [Foreign Key of ApplicationUserId</li>
+  <li>RoleId guid [Foreign Key of IdentityRoleId</li>
 </ul>
 
 
@@ -53,14 +80,17 @@
 
 <h4>FUNCTIONALITY I WOULD LIKE TO ACCOMPLISH:<h4>
 
-1.	Full CRUD for Product, Department, Promotion, Zone, Role)
-2.	Get all products 
-3.	Get product by Id
-4.	Get all products by Department #
-5.	Get all products by Zone #
-6.	Get all products by Promotion
-7.	Edit product by Id
-8.	Edit multiple products' promotion by Department #
+1.	Full CRUD for Product, Department, Promotion, Zone, Size, PromotionType)
+2.	Get all Products 
+3.	Get Product by Id
+4.	Get all Products by Department #
+5.	Search for a Product by SKU
+6.	Edit Product by Id
+7.	Edit multiple Products' Promotion by DepartmentPromotion
+8.	Calculate SalesPrice based on Product’s TicketPrice, DepartmentPromotion, and Individual Product’s Promotion
+9.  Create Roles for Admin and Employee
+10. Limit Employee access and view to only be able to access and/or see List and Details views
+
 
 <h2>ACKNOWLEDGEMENTS</h2>
 
