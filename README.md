@@ -127,7 +127,7 @@ There is one seeded Admin that can be used for testing:
         </ul>  
         </ul>
   </ul>
-<li> A screenshot of my local db for RetailManagementTool is provided, in case there are any issues with seeding/testing.</li>
+<li> A screenshot of my local db for Department, Promotion, and PromotionType is provided, in case there are any issues with seeding/testing. This will also give you several real life examples to use.</li>
         <ul>
           <li><a id="Local db RMT" href="https://docs.google.com/document/d/e/2PACX-1vTBKNs5qwMTI1_0aT9BtyjeoiUwVVLevOcDFH6dnyJetVFhOF4Gm8MUM3BMWhHpvVJpwWvR1nUnAHn9/pub" target="blank">Screenshot of local db for RMT</a></li>
         </ul>
