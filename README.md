@@ -184,10 +184,6 @@ Once the promotion has been determined, the switch case uses TicketPrice, PromoT
                     return department.DepartmentPromotion.PromotionDescription;
             }
         }
-    }
-}
-
-```
 
 <h2>ACKNOWLEDGEMENTS</h2>
 
