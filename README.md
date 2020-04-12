@@ -81,7 +81,7 @@
 
 <h2>Usage</h2>
 
-<Two types of Roles get seeded when you run this program (Admin and Employee).
+<Through the Startup.cs class, two types of Roles get seeded when you run this program (Admin and Employee).
 There is one seeded Admin that can be used for testing:
           UserName: Master
           Email:    master@gmail.com
@@ -90,6 +90,39 @@ There is one seeded Admin that can be used for testing:
  Any other user that is created using the Register functionality, must select the Role, Employee.
  
  Employee's access and ability to see certain Views and hyperlinks is limited to only seeing List and Details pages for Product, Department, Zone, Size, Promotion, and PromotionType. Employees cannot edit, create or delete anything.
+ 
+ The program also is seeded with Sizes, Zones, and PromotionTypes.
+ 
+ Upon cloning, a promotion (using a seeded PromotionType) and a department (using a newly created promotion) will have to be created  before a user can create a product.
+ <ul>
+  <li>Create a Promotion, using a seeded PromotionType.
+    <ul>
+      <li>Recommendation: Create at least 2 Promotions</li>
+      <ul>
+      <li> Promotion 1:</li>
+        <ul>
+      <li> Promotion Type Id: No Promo</li>
+      <li> Promotion Description: No Promotion</li>
+      <li> Promotion Value 0 (although value shouldn't matter for No Promo. **See Sales Price methods below**</li>
+        </ul>  
+      <li> Promotion 2:</li>
+              <ul>
+      <li> Promotion Type Id: Percent Off</li>
+      <li> Promotion Description: 30% Off</li>
+      <li> Promotion Value: 30 </li>
+      </ul>
+      </ul>
+  <li>Create a Department, using a newly created Promotion</li>
+      <ul>
+      <li>Recommendation: Create at least 1 Department</li>
+      <ul>
+      <li> Department 1:</li>
+        <ul>
+      <li> Department Number: 94</li>
+      <li> Department Name: Dresses</li>
+      <li> Department Promotion Id: Select either No Promo or 30% Off and then select the opposite for the product's Promotion Id when you create it</li>
+        </ul>  
+ </ul>
  
     
 
