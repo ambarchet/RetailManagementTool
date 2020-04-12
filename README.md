@@ -121,7 +121,7 @@ There is one seeded Admin that can be used for testing:
         <ul>
       <li> Department Number: 94</li>
       <li> Department Name: Dresses</li>
-      <li> Department Promotion Id: Select either No Promo or 30% Off and then select the opposite for the product's Promotion Id when you create it</li>
+      <li> Department Promotion Id: Select either No Promo or 30% Off and then select the opposite for the product's Promotion Id when you create the product</li>
         </ul>  
  </ul>
  
