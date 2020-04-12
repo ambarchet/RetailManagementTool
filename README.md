@@ -111,10 +111,12 @@ There is one seeded Admin that can be used for testing:
 <h4>Sales Price Calculation</h4>
 ```
 Sales Price and Promotion Description are calculated in the ProductDetail view. It first finds out what the product's department promotion is. Then, through a switch case it does one of the following:
-                      Department's promotion's promotiontype is set to No Promo: Use the product's individual promotion and description.
-                      Department's promotion's promotion type is set to anything else: Use the product's department promotion and description.
+<ul>
+  <li>Department's promotion's promotiontype is set to No Promo: Use the product's individual promotion and description.</li>
+  <li>Department's promotion's promotion type is set to anything else: Use the product's department promotion and description.</li>
+</ul>
 
-Once the promotion has been determined, the switch case uses TicketPrice, PromoType, and PromotionValue to calculate the Sales Price
+Once the promotion has been determined, the switch case uses TicketPrice, PromoType, and PromotionValue to calculate the Sales Price.
 
 
         private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId) //int promoID
