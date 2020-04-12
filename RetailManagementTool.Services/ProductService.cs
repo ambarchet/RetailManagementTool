@@ -266,7 +266,7 @@ namespace RetailManagementTool.Services
         private int? CalculatePromotionId(Promotion promotion, Department department)
         {
 
-            switch (department.DepartmentPromotion.PromotionDescription)
+            switch (department.DepartmentPromotion.PromoType.Type) //PromotionDescription)
 
             {
                 case "No Promo":
@@ -282,7 +282,7 @@ namespace RetailManagementTool.Services
         private string CalculatePromotionDescription(Promotion promotion, Department department)
         {
 
-            switch (department.DepartmentPromotion.PromotionDescription)
+            switch (department.DepartmentPromotion.PromoType.Type) //PromotionDescription)
 
             {
                 case "No Promo":
