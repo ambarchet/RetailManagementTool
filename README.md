@@ -110,7 +110,7 @@ There is one seeded Admin that can be used for testing:
 
 <h4>Sales Price Calculation</h4>
 ```sh
-        private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId) //int promoID
+private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId) //int promoID
         {
             var service = new PromotionService();
             var promotion = service.GetPromotionById(promoId);
