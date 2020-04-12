@@ -84,9 +84,10 @@
 
 <Through the Startup.cs class, two types of Roles get seeded when you run this program (Admin and Employee).
 There is one seeded Admin that can be used for testing:
-          UserName: Master
-          Email:    master@gmail.com
-          Password: Master1!
+<ul>
+  <li>UserName: Master</li>
+  <li>Email:    master@gmail.com</li>
+  <li>Password: Master1!</li>
           
  Any other user that is created using the Register functionality, must select the Role, Employee.
  
@@ -124,12 +125,11 @@ There is one seeded Admin that can be used for testing:
       <li> Department Name: Dresses</li>
       <li> Department Promotion Id: Select either No Promo or 30% Off and then select the opposite for the product's Promotion Id when you create the product</li>
         </ul>  
+<li> A screenshot of my local db for RetailManagementTool is provided, in case there are any issues with seeding/testing.</li>
+        <ul>
+          <li><a id="Local db RMT" href="https://docs.google.com/document/d/e/2PACX-1vTBKNs5qwMTI1_0aT9BtyjeoiUwVVLevOcDFH6dnyJetVFhOF4Gm8MUM3BMWhHpvVJpwWvR1nUnAHn9/pub" target="blank">Screenshot of local db for RMT</a></li>
+        </ul>
  </ul>
-        
-Screenshot of my local db for RetailManagementTool is provided, in case there are any issues with seeding/testing.
-
-<a id="Local db RMT" href="https://docs.google.com/document/d/e/2PACX-1vTBKNs5qwMTI1_0aT9BtyjeoiUwVVLevOcDFH6dnyJetVFhOF4Gm8MUM3BMWhHpvVJpwWvR1nUnAHn9/pub" target="blank">Screenshot of local db for RMT</a>
- 
     
 
 <h2>FUNCTIONALITY/ENDPOINTS</h2>
