@@ -2,9 +2,13 @@
 
 <h2>DESCRIPTION</h2>
 
-<p>My goal was to create an MVC application for retail stores to be able to manage their products, as it relates to promotions and zone allocations. The target audience would be retail stores of any kind. This application could be used by, both, home office and associates on the sales floor. As someone who has worked in the retail industry, I realize how important it is to get information to customer-facing associates in as quick and user-friendly a manner as possible.</p>
+<p>My goal was to create an MVC application for retail stores to be able to manage their products, as it relates to promotions and zone allocations. The target audience would be retail stores of any kind. This application could be used by, both, home office and associates on the sales floor. As someone who has worked in the retail industry, I realize how important it is to get information to customer-facing associates in as quick and user-friendly a manner as possible. 
+  
+  This project is designed to provide "back end" functionality for an administrator to be able to create, edit, update, and delete a product for sale, department, zone, size, and promotion. It also provides "front end" functionality that gives an Employee the ability to look up a product's department, style #, SKU #, name, zone, size, color, zone location, ticket price, and sales price. There is a SKU searchbar in place at the top of the products list page which allows an employee to retrieve a specific product based on its SKU #, much like what would happen if they scanned a product's barcode. </p>
 
 <h2>DATABASE</h2>
+
+   
 
 <h4>Product</h4>
 <ul>
@@ -75,6 +79,19 @@
   <li>RoleId guid [Foreign Key of IdentityRoleId</li>
 </ul>
 
+<h2>Usage</h2>
+
+<Two types of Roles get seeded when you run this program (Admin and Employee).
+There is one seeded Admin that can be used for testing:
+          UserName: Master
+          Email:    master@gmail.com
+          Password: Master1!
+          
+ Any other user that is created using the Register functionality, must select the Role, Employee.
+ 
+ Employee's access and ability to see certain Views and hyperlinks is limited to only seeing List and Details pages for Product, Department, Zone, Size, Promotion, and PromotionType. Employees cannot edit, create or delete anything.
+ 
+    
 
 <h2>FUNCTIONALITY/ENDPOINTS</h2>
 
@@ -91,6 +108,76 @@
 9.  Create Roles for Admin and Employee
 10. Limit Employee access and view to only be able to access and/or see List and Details views
 
+<h4>Sales Price Calculation</h4>
+```sh
+        private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId) //int promoID
+        {
+            var service = new PromotionService();
+            var promotion = service.GetPromotionById(promoId);
+
+            switch (promotion.PromoType)
+
+            {
+                case "No Promo":
+                    return ticketPrice;
+                case "Percent Off":
+                    return (ticketPrice * (100 - promotion.PromotionValue) / 100);
+                case "New Dollar Amount":
+                    return promotion.PromotionValue;
+
+                default:
+                    return ticketPrice;
+            }
+        }
+
+        private decimal CalculateIndividualSalesPrice(decimal ticketPrice, Promotion promotion)
+        {
+            {
+                switch (promotion.PromoType.Type)
+
+                {
+                    case "No Promo":
+
+                        return ticketPrice;
+                    case "Percent Off":
+                        return (ticketPrice * (100 - promotion.PromoValue) / 100);
+                    case "New Dollar Amount":
+                        return promotion.PromoValue;
+
+                    default:
+                        return ticketPrice;
+                }
+            }
+        }
+
+        private int? CalculatePromotionId(Promotion promotion, Department department)
+        {
+            switch (department.DepartmentPromotion.PromoType.Type) //PromotionDescription)
+
+            {
+                case "No Promo":
+
+                    return promotion.PromoTypeId;
+                default:
+                    return department.DepartmentPromotionId;
+            }
+        }
+
+        private string CalculatePromotionDescription(Promotion promotion, Department department)
+        {
+            switch (department.DepartmentPromotion.PromoType.Type) //PromotionDescription)
+
+            {
+                case "No Promo":
+
+                    return promotion.PromotionDescription;
+                default:
+                    return department.DepartmentPromotion.PromotionDescription;
+            }
+        }
+    }
+}
+```
 
 <h2>ACKNOWLEDGEMENTS</h2>
 
