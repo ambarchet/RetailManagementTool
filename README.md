@@ -109,7 +109,7 @@ There is one seeded Admin that can be used for testing:
 10. Limit Employee access and view to only be able to access and/or see List and Details views
 
 <h4>Sales Price Calculation</h4>
-```
+
 Sales Price and Promotion Description are calculated in the ProductDetail view. It first finds out what the product's department promotion is. Then, through a switch case it does one of the following:
 <ul>
   <li>Department's promotion's promotiontype is set to No Promo: Use the product's individual promotion and description.</li>
