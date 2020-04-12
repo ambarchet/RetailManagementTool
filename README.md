@@ -8,6 +8,7 @@
 
 <h2>DATABASE</h2>
 
+<a id="Screenshot of db Layout " href="https://docs.google.com/document/d/e/2PACX-1vRz7zr7j0bL1stj24fZVAUSaPpmZ3_TMRh8-aSbcQNo7YkzfplcV_EEPYRCFsdOGbrLbEwThjm0YyVG/pub" target="blank">Screenshot of dbdiagram.io layout for RetailManagementTool</a>
    
 
 <h4>Product</h4>
@@ -124,6 +125,10 @@ There is one seeded Admin that can be used for testing:
       <li> Department Promotion Id: Select either No Promo or 30% Off and then select the opposite for the product's Promotion Id when you create the product</li>
         </ul>  
  </ul>
+        
+Screenshot of my local db for RetailManagementTool is provided, in case there are any issues with seeding/testing.
+
+<a id="Local db RMT" href="https://docs.google.com/document/d/e/2PACX-1vTBKNs5qwMTI1_0aT9BtyjeoiUwVVLevOcDFH6dnyJetVFhOF4Gm8MUM3BMWhHpvVJpwWvR1nUnAHn9/pub" target="blank">Screenshot of local db for RMT</a>
  
     
 
