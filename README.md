@@ -95,7 +95,7 @@ There is one seeded Admin that can be used for testing:
  
  Upon cloning, a promotion (using a seeded PromotionType) and a department (using a newly created promotion) will have to be created  before a user can create a product.
  <ul>
-  <li>Create a Promotion, using a seeded PromotionType.
+  <li>Create a Promotion, using a seeded PromotionType.</li>
     <ul>
       <li>Recommendation: Create at least 2 Promotions</li>
       <ul>
@@ -112,6 +112,7 @@ There is one seeded Admin that can be used for testing:
       <li> Promotion Value: 30 </li>
       </ul>
       </ul>
+  </ul>
   <li>Create a Department, using a newly created Promotion</li>
       <ul>
       <li>Recommendation: Create at least 1 Department</li>
