@@ -109,7 +109,8 @@ There is one seeded Admin that can be used for testing:
 10. Limit Employee access and view to only be able to access and/or see List and Details views
 
 <h4>Sales Price Calculation</h4>
-```sh
+```
+
 private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId) //int promoID
         {
             var service = new PromotionService();
@@ -177,6 +178,7 @@ private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId) //int pro
         }
     }
 }
+
 ```
 
 <h2>ACKNOWLEDGEMENTS</h2>
