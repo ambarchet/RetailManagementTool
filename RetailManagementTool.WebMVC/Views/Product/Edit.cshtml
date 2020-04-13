@@ -11,7 +11,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="row">
-        <div class="col-md-5 form-horizontal" style="border:ridge;border-color:grey">
+        <div class="col-md-8 form-horizontal" style="border:ridge;border-color:grey">
             <br />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.ProductId)
@@ -22,7 +22,7 @@
                     @*
                 @Html.EditorFor(model => model.ProductDepartmentId, new { htmlAttributes = new { @class = "form-control" } })
                     *@
-                    @Html.DropDownListFor(model => model.ProductDepartmentId, ViewBag.Departments as List<SelectListItem>, "All")
+                    @Html.DropDownListFor(model => model.ProductDepartmentId, ViewBag.Departments as List<SelectListItem>, "Select From List")
                     @Html.ValidationMessageFor(model => model.ProductDepartmentId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -65,7 +65,7 @@
                     @*
                 @Html.EditorFor(model => model.ProductSizeId, new { htmlAttributes = new { @class = "form-control" } })
                     *@
-                    @Html.DropDownListFor(model => model.ProductSizeId, ViewBag.Sizes as List<SelectListItem>, "All")
+                    @Html.DropDownListFor(model => model.ProductSizeId, ViewBag.Sizes as List<SelectListItem>, "Select From List")
                     @Html.ValidationMessageFor(model => model.ProductSizeId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -75,6 +75,7 @@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.TicketPrice, new { htmlAttributes = new { @class = "form-control", Title = "Ex. $10.99 = 10.99 (without $) " } })
                     @Html.ValidationMessageFor(model => model.TicketPrice, "", new { @class = "text-danger" })
+                    Ex. $10.99 = 10.99 (without $)
                 </div>
             </div>
             <hr />
@@ -84,7 +85,7 @@
                     @*
                 @Html.EditorFor(model => model.ProductPromotionId, new { htmlAttributes = new { @class = "form-control" } })
                     *@
-                    @Html.DropDownListFor(model => model.ProductPromotionId, ViewBag.Promotions as List<SelectListItem>, "All")
+                    @Html.DropDownListFor(model => model.ProductPromotionId, ViewBag.Promotions as List<SelectListItem>, "Select From List")
                     @Html.ValidationMessageFor(model => model.ProductPromotionId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -95,7 +96,7 @@
                     @*
                 @Html.EditorFor(model => model.ProductZoneId, new { htmlAttributes = new { @class = "form-control" } })
                     *@
-                    @Html.DropDownListFor(model => model.ProductZoneId, ViewBag.Zones as List<SelectListItem>, "All")
+                    @Html.DropDownListFor(model => model.ProductZoneId, ViewBag.Zones as List<SelectListItem>, "Select From List")
                     @Html.ValidationMessageFor(model => model.ProductZoneId, "", new { @class = "text-danger" })
                 </div>
             </div>
