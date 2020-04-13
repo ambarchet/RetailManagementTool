@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Owin;
 using RetailManagementTool.Data;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 [assembly: OwinStartupAttribute(typeof(RetailManagementTool.WebMVC.Startup))]
 namespace RetailManagementTool.WebMVC
@@ -66,23 +67,7 @@ namespace RetailManagementTool.WebMVC
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            /*
-            context.Departments.AddOrUpdate
-                (
-                x => x.DepartmentName,
-                new Department()
-                {
-                    DepartmentNumber = "94",
-                    DepartmentName = "Dresses",
-                },
-                new Department()
-                {
-                    DepartmentNumber = "06",
-                    DepartmentName = "Accessories"
-                }
-                );
-            context.SaveChanges();
-            */
+
             context.Sizes.AddOrUpdate
                (
                x => x.SizeName,
@@ -162,31 +147,35 @@ namespace RetailManagementTool.WebMVC
               }
               );
             context.SaveChanges();
-/*
-            context.Promotions.AddOrUpdate
+
+            context.PromotionTypes.AddOrUpdate
              (
-             x => x.PromotionDescription,
-             new Promotion()
+             x => x.Type,
+             new PromotionType()
              {
-                 PromotionDescription = "No Promo",
-                 PromoTypeId = 1,
-                 PromotionValue = 0
+                 Type = "Percent Off"
              },
-             new Promotion()
+             new PromotionType()
              {
-                 PromotionDescription = "30% Off",
-                 PromoTypeId = 1,
-                 PromotionValue = 30
+                 Type = "New Dollar Amount"
+                 
              },
-             new Promotion()
+             new PromotionType()
              {
-                 PromotionDescription = "BOGO 50% Off",
-                 PromoTypeId = 3,
-                 PromotionValue = 50
+                 Type = "BOGO Percent"
+             },
+            new PromotionType()
+            {
+                Type = "BOGO Dollar Amount"
+
+            },
+             new PromotionType()
+             {
+                 Type = "No Promo"
              }
              );
+
             context.SaveChanges();
-            */
         }
     }
 }

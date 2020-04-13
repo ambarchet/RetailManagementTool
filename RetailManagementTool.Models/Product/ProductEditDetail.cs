@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RetailManagementTool.Models.Product
 {
-    public class ProductDetail
+    public class ProductEditDetail
     {
         [Display(Name = "Product Id")]
         public int ProductId { get; set; }
@@ -22,45 +22,32 @@ namespace RetailManagementTool.Models.Product
 
         public string SKU { get; set; }
 
+        [Display(Name = "Product Name")]
+        public string ProductName { get; set; }
+
         public string Color { get; set; }
 
-        [Display(Name = "Size Id")]
+        [Display(Name = "Size")]
         public int? SizeId { get; set; }
 
         public string Size { get; set; }
 
-        [Display(Name = "Name")]
-        public string ProductName { get; set; }
-
-        [Display(Name = "Ticket Price")]
         [DataType(DataType.Currency)]
+        [Display(Name = "Ticket Price")]
         public decimal TicketPrice { get; set; }
 
-        [Display(Name = "Promotion Id")]
+        [Display(Name = "Promotion")]
         public int? PromotionId { get; set; }
 
         [Display(Name = "Promotion")]
         public string PromotionDescription { get; set; }
 
-        [Display(Name = "Promotion Price")]
-        [DataType(DataType.Currency)]
-        public decimal SalesPrice { get; set; }
-
-        [Display(Name = "Zone Id")]
+        [Display(Name = "Zone")]
         public int? ZoneId { get; set; }
 
         [Display(Name = "Zone")]
         public string ZoneName { get; set; }
 
-
-        [Display(Name = "Promotion Price")]
-        [DataType(DataType.Currency)]
-        public decimal IndividualSalesPrice { get; set; }
-
-
-        [Display(Name = "Promotion")]
-        public string DepartmentPromotionDescription { get; set; }
-
-
     }
 }
+

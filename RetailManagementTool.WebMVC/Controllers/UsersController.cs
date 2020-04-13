@@ -32,31 +32,9 @@ namespace RetailManagementTool.WebMVC.Controllers
             }
             return false;
         }
-        /*
         // GET: Users
-        public ActionResult Index()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = User.Identity;
-                ViewBag.Name = user.Name;
+        [Authorize(Roles = "Admin")]
 
-                ViewBag.displayMenu = "No";
-
-                if (IsAdminUser())
-                {
-                    ViewBag.displayMenu = "Yes";
-                }
-                return View();
-            }
-            else
-            {
-                ViewBag.Name = "Not Logged IN";
-            }
-            return View();
-        }
-        */
-        // GET: Users
         public ActionResult Index()
         {
             ApplicationDbContext context = new ApplicationDbContext();
@@ -76,9 +54,6 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             var Users = context.Users.ToList();
             return View(Users);
-
         }
-
-
     }
 }

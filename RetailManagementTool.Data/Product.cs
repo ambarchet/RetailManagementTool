@@ -52,35 +52,6 @@ namespace RetailManagementTool.Data
         [Display(Name = "Ticket Price")]
         public decimal TicketPrice { get; set; }
 
-        //[Required]
-        //[DataType(DataType.Currency)]
-        //[Display(Name = "Sales Price")]
-        //public decimal SalesPrice
-        //{
-        //    get
-        //    {
-        //        switch(ProductPromotionId)
-        //            //ProductPromotion.PromoType.Type
-        //        {
-        //            case "No Promo":
-
-        //                return TicketPrice;
-        //            case 13:
-        //                int t = Convert.ToInt32(TicketPrice * 0.70M);
-        //                // decimal s = (t * (.70)); 
-        //                decimal s = Convert.ToDecimal(t);
-        //                return s;
-        //            case "Percent Off":
-        //                TicketPrice (calculate percent off by promo value)
-        //                return ProductPromotion.PromotionValue;
-
-        //            default:
-        //                return TicketPrice;
-        //        }
-        //    }
-        //}
-        
-
         [Display(Name = "Promotion")]
         [ForeignKey(nameof(ProductPromotion))]
         public int? ProductPromotionId { get; set; }

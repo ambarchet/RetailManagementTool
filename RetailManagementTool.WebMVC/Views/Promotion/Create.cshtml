@@ -30,14 +30,14 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PromotionDescription, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PromotionDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.PromotionDescription, new { htmlAttributes = new { @class = "form-control", Title="Use exact wording you want to display for Promotion (ex. 50% Off, BOGO 50% Off, $5.99" } })
             @Html.ValidationMessageFor(model => model.PromotionDescription, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.PromotionValue, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PromotionValue, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.PromotionValue, new { htmlAttributes = new { @class = "form-control", Title="Ex. 40% = 40 (without decimal or %), $5.99 = 5.99 (without $) " } })
             @Html.ValidationMessageFor(model => model.PromotionValue, "", new { @class = "text-danger" })
         </div>
     </div>

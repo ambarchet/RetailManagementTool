@@ -8,9 +8,12 @@
     Products in Department
 </h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -63,14 +66,24 @@
             <td>
                 @Html.HiddenFor(modelItem => item.PromotionDescription)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+                </td>
+
+            }
         </tr>
     }
 
 </table>
-<li>@Html.ActionLink("Back to Department List", "Index", "Department", null, new { /*id = "item "*/ })</li>
+@Html.ActionLink("Back to Department List", "Index", "Department", null, new { /*id = "item "*/ })
 

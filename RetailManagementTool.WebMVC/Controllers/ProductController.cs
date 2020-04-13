@@ -13,30 +13,9 @@ namespace RetailManagementTool.WebMVC.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
         // GET: Department
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index(string SKU)
         {
-            {
-               /*
-                            if (!String.IsNullOrEmpty(searching))
-                            {
-                                var query = _db.Products.Where(p => p.SKU.Contains(searching)).Select(q => new ProductListItem
-                                {
-                                    ProductId = q.ProductId,
-                                    DepartmentNumber = q.ProductDepartment.DepartmentNumber,
-                                    Style = q.Style,
-                                    SKU = q.SKU,
-                                    ProductName = q.ProductName,
-                                    ZoneName = q.ProductZone.ZoneName,
-                                    PromotionDescription = q.ProductPromotion.PromotionDescription
-                                }
-                                );
-                                return View(query.ToList());
-
-
-                                //   return View( _db.Products.Where(x => x.SKU.Contains(searching) || searching == null).ToList());
-                            }
-                      */      
-            }
             var service = new ProductService();
 
             if (SKU == null)
@@ -49,10 +28,11 @@ namespace RetailManagementTool.WebMVC.Controllers
                 return View(query);
         }
 
-            /*
-            */
+        /*
+        */
 
         //CREATE:GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             var DepartmentsList = new List<SelectListItem>();
@@ -87,7 +67,6 @@ namespace RetailManagementTool.WebMVC.Controllers
             }
             ViewBag.Zones = ZonesList;
 
-            // ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionId");
             return View();
         }
         //CREATE:POST
@@ -107,6 +86,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //GET BY ID
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int id)
         {
             var service = new ProductService();
@@ -114,9 +94,10 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             return View(model);
         }
-        
+
 
         //GET PRODUCTS BY DEPARTMENT ID
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult ListByDepartmentNumber(int id)
         {
             var service = new ProductService();
@@ -125,6 +106,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //UPDATE: GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var DepartmentsList = new List<SelectListItem>();
@@ -135,14 +117,6 @@ namespace RetailManagementTool.WebMVC.Controllers
             }
             ViewBag.Departments = DepartmentsList;
 
-            var SizesList = new List<SelectListItem>();
-            var SizeQuery = from s in _db.Sizes select s;
-            foreach (var s in SizeQuery)
-            {
-                SizesList.Add(new SelectListItem { Value = s.SizeId.ToString(), Text = s.SizeName });
-            }
-            ViewBag.Sizes = SizesList;
-
             var PromotionsList = new List<SelectListItem>();
             var PromotionQuery = from p in _db.Promotions select p;
             foreach (var p in PromotionQuery)
@@ -150,6 +124,14 @@ namespace RetailManagementTool.WebMVC.Controllers
                 PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
             }
             ViewBag.Promotions = PromotionsList;
+
+            var SizesList = new List<SelectListItem>();
+            var SizeQuery = from s in _db.Sizes select s;
+            foreach (var s in SizeQuery)
+            {
+                SizesList.Add(new SelectListItem { Value = s.SizeId.ToString(), Text = s.SizeName });
+            }
+            ViewBag.Sizes = SizesList;
 
             var ZonesList = new List<SelectListItem>();
             var ZoneQuery = from z in _db.Zones select z;
@@ -160,7 +142,7 @@ namespace RetailManagementTool.WebMVC.Controllers
             ViewBag.Zones = ZonesList;
 
             var service = new ProductService();
-            var detail = service.GetProductById(id);
+            var detail = service.GetProductForEdit(id);
             var model =
                 new ProductEdit
                 {
@@ -204,6 +186,7 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //DELETE
+        [Authorize(Roles = "Admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {

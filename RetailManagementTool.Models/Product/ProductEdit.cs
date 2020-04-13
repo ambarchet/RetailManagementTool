@@ -13,7 +13,7 @@ namespace RetailManagementTool.Models.Product
         [Display(Name = "Product Id")]
         public int ProductId { get; set; }
 
-        [Display(Name = "Department Id")]
+        [Display(Name = "Department")]
         public int? ProductDepartmentId { get; set; }
 
         [Required]

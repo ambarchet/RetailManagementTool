@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Product</h2>
+<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -64,7 +64,7 @@
         @Html.LabelFor(model => model.ProductSizeId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @*
-            @Html.EditorFor(model => model.ProductSizeId, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(model => model.ProductSizeId, new { htmlAttributes = new { @class = "form-control" } })
             *@
             @Html.DropDownListFor(model => model.ProductSizeId, ViewBag.Sizes as List<SelectListItem>, "All")
             @Html.ValidationMessageFor(model => model.ProductSizeId, "", new { @class = "text-danger" })
@@ -89,17 +89,15 @@
             @Html.ValidationMessageFor(model => model.ProductPromotionId, "", new { @class = "text-danger" })
         </div>
     </div>
-
     <div class="form-group">
         @Html.LabelFor(model => model.ProductZoneId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @*
-            @Html.EditorFor(model => model.ProductZoneId, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(model => model.ProductZoneId, new { htmlAttributes = new { @class = "form-control" } })
             *@
             @Html.DropDownListFor(model => model.ProductZoneId, ViewBag.Zones as List<SelectListItem>, "All")
             @Html.ValidationMessageFor(model => model.ProductZoneId, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        </div>    </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

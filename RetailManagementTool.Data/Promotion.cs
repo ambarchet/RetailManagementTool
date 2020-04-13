@@ -25,7 +25,7 @@ namespace RetailManagementTool.Data
         public int? PromoTypeId { get; set; }
         public virtual PromotionType PromoType { get; set; }
 
-        public int PromotionValue { get; set; }
+        public decimal PromoValue { get; set; }
         
     }
 }

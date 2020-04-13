@@ -23,7 +23,7 @@ namespace RetailManagementTool.Models.Promotion
         public int? PromoTypeId { get; set; }
 
         [Display(Name = "Promotion Value")]
-        public int PromotionValue { get; set; }
+        public decimal PromotionValue { get; set; }
 
     }
 }

@@ -12,13 +12,13 @@
     <dl class="dl-horizontal">
         <dt>
             @*
-            @Html.DisplayNameFor(model => model.ProductId)
+                @Html.DisplayNameFor(model => model.ProductId)
             *@
         </dt>
 
         <dd>
             @*
-            @Html.DisplayFor(model => model.ProductId)
+                @Html.DisplayFor(model => model.ProductId)
             *@
             @Html.HiddenFor(model => model.ProductId)
         </dd>
@@ -30,7 +30,7 @@
 
         <dd>
             @*
-            @Html.DisplayFor(model => model.DepartmentId)
+                @Html.DisplayFor(model => model.DepartmentId)
             *@
             @Html.HiddenFor(model => model.DepartmentId)
         </dd>
@@ -69,14 +69,14 @@
 
         <dt>
             @*
-            @Html.DisplayNameFor(model => model.SizeId)
+                @Html.DisplayNameFor(model => model.SizeId)
             *@
             @Html.HiddenFor(model => model.SizeId)
         </dt>
 
         <dd>
             @*
-            @Html.DisplayFor(model => model.SizeId)
+                @Html.DisplayFor(model => model.SizeId)
             *@
             @Html.HiddenFor(model => model.SizeId)
         </dd>
@@ -98,11 +98,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ZoneId)
+            @*
+                @Html.DisplayNameFor(model => model.ZoneId)
+            *@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ZoneId)
+            @Html.HiddenFor(model => model.ZoneId)
         </dd>
 
         <dt>
@@ -120,59 +122,68 @@
         <dd>
             @Html.DisplayFor(model => model.TicketPrice)
         </dd>
-@if(Model.DepartmentPromotionDescription == "No Promo")
-{
+        @if (Model.DepartmentPromotionDescription == "No Promo")
+        {
 
-        <dt>
-            @*
-            @Html.DisplayNameFor(model => model.PromotionId)
-            *@
-        </dt>
+            <dt>
+                @*
+                    @Html.DisplayNameFor(model => model.PromotionId)
+                *@
+            </dt>
 
-        <dd>
-            @*
-            @Html.DisplayFor(model => model.PromotionId)
-            *@
-            @Html.HiddenFor(model => model.PromotionId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PromotionDescription)
-        </dt>
+            <dd>
+                @*
+                    @Html.DisplayFor(model => model.PromotionId)
+                *@
+                @Html.HiddenFor(model => model.PromotionId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PromotionDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PromotionDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PromotionDescription)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IndividualSalesPrice)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.IndividualSalesPrice)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IndividualSalesPrice)
-        </dd>
-}
-else
-{
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartmentPromotionDescription)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IndividualSalesPrice)
+            </dd>
+        }
+        else
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartmentPromotionDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartmentPromotionDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentPromotionDescription)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SalesPrice)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.SalesPrice)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SalesPrice)
-        </dd>
-}
+            <dd>
+                @Html.DisplayFor(model => model.SalesPrice)
+            </dd>
+        }
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
