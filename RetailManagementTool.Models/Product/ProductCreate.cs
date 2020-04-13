@@ -10,7 +10,7 @@ namespace RetailManagementTool.Models.Product
     public class ProductCreate
     {
         [Display(Name = "Department")]
-        public string DepartmentNumber { get; set; }
+        public int? DepartmentId { get; set; }
 
         [Required]
         [MinLength(7, ErrorMessage = "Style must be at least 7 characters long.")]
@@ -28,8 +28,7 @@ namespace RetailManagementTool.Models.Product
         public string Color { get; set; }
 
         [Required]
-        [MaxLength(25, ErrorMessage = "There are too many characters in this field.")]
-        public string SizeName { get; set; }
+        public int? SizeId { get; set; }
 
         [Required]
         [MinLength(2, ErrorMessage = "Name must be at least 2 characters long.")]
@@ -41,18 +40,17 @@ namespace RetailManagementTool.Models.Product
         [DataType(DataType.Currency)]
         [Display(Name = "Ticket Price")]
         public decimal TicketPrice { get; set; }
-
+/*
         [Required]
         [Display(Name = "Sales Price")]
         [DataType(DataType.Currency)]
         public decimal SalesPrice { get; set; }
-
+        */
         [Display(Name = "Promotion")]
-        public string PromotionDescription { get; set; }
+        public int? PromotionId { get; set; }
 
         [Display(Name = "Zone")]
-        [MaxLength(50, ErrorMessage = "There are too many characters in this field.")]
+        public int? ZoneId { get; set; }
 
-        public string ZoneName { get; set; }
     }
 }

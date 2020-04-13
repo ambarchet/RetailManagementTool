@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Owin;
 using RetailManagementTool.Data;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 [assembly: OwinStartupAttribute(typeof(RetailManagementTool.WebMVC.Startup))]
 namespace RetailManagementTool.WebMVC
@@ -66,23 +67,7 @@ namespace RetailManagementTool.WebMVC
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            /*
-            context.Departments.AddOrUpdate
-                (
-                x => x.DepartmentName,
-                new Department()
-                {
-                    DepartmentNumber = "94",
-                    DepartmentName = "Dresses",
-                },
-                new Department()
-                {
-                    DepartmentNumber = "06",
-                    DepartmentName = "Accessories"
-                }
-                );
-            context.SaveChanges();
-            */
+
             context.Sizes.AddOrUpdate
                (
                x => x.SizeName,
@@ -123,6 +108,73 @@ namespace RetailManagementTool.WebMVC
                    SizeName = "02L"
                }
                );
+            context.SaveChanges();
+
+            context.Zones.AddOrUpdate
+              (
+              x => x.ZoneName,
+              new Zone()
+              {
+                  ZoneName = "M Hot Zone"
+              },
+              new Zone()
+              {
+                  ZoneName = "M Zone 1"
+              },
+              new Zone()
+              {
+                  ZoneName = "M Zone 2"
+              },
+              new Zone()
+              {
+                  ZoneName = "M Clearance"
+              },
+              new Zone()
+              {
+                  ZoneName = "W Hot Zone"
+              },
+              new Zone()
+              {
+                  ZoneName = "W Zone 1"
+              },
+              new Zone()
+              {
+                  ZoneName = "W Zone 2"
+              },
+              new Zone()
+              {
+                  ZoneName = "W Clearance"
+              }
+              );
+            context.SaveChanges();
+
+            context.PromotionTypes.AddOrUpdate
+             (
+             x => x.Type,
+             new PromotionType()
+             {
+                 Type = "Percent Off"
+             },
+             new PromotionType()
+             {
+                 Type = "New Dollar Amount"
+                 
+             },
+             new PromotionType()
+             {
+                 Type = "BOGO Percent"
+             },
+            new PromotionType()
+            {
+                Type = "BOGO Dollar Amount"
+
+            },
+             new PromotionType()
+             {
+                 Type = "No Promo"
+             }
+             );
+
             context.SaveChanges();
         }
     }

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<RetailManagementTool.Models.Zone.ZoneListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:#b40505">Zones</h2>
+<hr />
+<table class="table" style="border:solid;border-color:grey">
+    <tr bgcolor="#204d74" style="color:white">
+        <th>
+            @*
+            @Html.DisplayNameFor(model => model.ZoneId)
+            *@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZoneName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.ZoneId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZoneName)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ZoneId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ZoneId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ZoneId })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ZoneId })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+<div class="row">
+    <div class="col-md-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("+Add New Zone", "Create")
+            </p>
+        }
+    </div>
+</div>

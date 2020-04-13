@@ -1,4 +1,5 @@
-﻿using RetailManagementTool.Models.Department;
+﻿using RetailManagementTool.Data;
+using RetailManagementTool.Models.Department;
 using RetailManagementTool.Services;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,10 @@ namespace RetailManagementTool.WebMVC.Controllers
 {
     public class DepartmentController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Department
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
             var service = new DepartmentService();
@@ -20,8 +23,18 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //CREATE:GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
+            var PromotionsList = new List<SelectListItem>();
+            var PromoQuery = from p in _db.Promotions select p;
+            foreach (var p in PromoQuery)
+            {
+                PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
+            }
+            ViewBag.Promotions = PromotionsList;
+
+            // ViewBag.PromotionId = new SelectList(_db.Promotions, "PromotionId", "PromotionId");
             return View();
         }
         //CREATE:POST
@@ -31,17 +44,17 @@ namespace RetailManagementTool.WebMVC.Controllers
         {
             if (!ModelState.IsValid)
             {
+
                 return View(model);
             }
 
             var service = new DepartmentService();
-
             service.CreateDepartment(model);
-
             return RedirectToAction("Index");
         }
 
         //GET BY ID
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int id)
         {
             var service = new DepartmentService();
@@ -51,8 +64,17 @@ namespace RetailManagementTool.WebMVC.Controllers
         }
 
         //UPDATE: GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
+            var PromotionsList = new List<SelectListItem>();
+            var PromoQuery = from p in _db.Promotions select p;
+            foreach (var p in PromoQuery)
+            {
+                PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
+            }
+            ViewBag.Promotions = PromotionsList;
+
             var service = new DepartmentService();
             var detail = service.GetDepartmentById(id);
             var model =
@@ -60,7 +82,8 @@ namespace RetailManagementTool.WebMVC.Controllers
                 {
                     DepartmentId = detail.DepartmentId,
                     DepartmentNumber = detail.DepartmentNumber,
-                    DepartmentName = detail.DepartmentName
+                    DepartmentName = detail.DepartmentName,
+                    DepartmentPromotionId = detail.DepartmentPromotionId
                 };
             return View(model);
         }
@@ -87,9 +110,11 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             ModelState.AddModelError("", "Your department could not be updated.");
             return View(model);
+            
         }
 
         //DELETE
+        [Authorize(Roles = "Admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {

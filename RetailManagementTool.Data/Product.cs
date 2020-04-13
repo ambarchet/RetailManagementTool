@@ -40,7 +40,6 @@ namespace RetailManagementTool.Data
         [MaxLength(10, ErrorMessage = "There are too many characters in this field.")]
         public string Color { get; set; }
 
-        // public SizeSelections Size { get; set; }
         [Required]
         [Display(Name = "Size")]
         [ForeignKey(nameof(ProductSize))]
@@ -52,11 +51,6 @@ namespace RetailManagementTool.Data
         [DataType(DataType.Currency)]
         [Display(Name = "Ticket Price")]
         public decimal TicketPrice { get; set; }
-
-        [Required]
-        [DataType(DataType.Currency)]
-        [Display(Name = "Sales Price")]
-        public decimal SalesPrice { get; set; }
 
         [Display(Name = "Promotion")]
         [ForeignKey(nameof(ProductPromotion))]

@@ -12,6 +12,7 @@ namespace RetailManagementTool.WebMVC.Controllers
     [Authorize]
     public class UsersController : Controller
     {
+
         public bool IsAdminUser()
         {
             if (User.Identity.IsAuthenticated)
@@ -31,29 +32,28 @@ namespace RetailManagementTool.WebMVC.Controllers
             }
             return false;
         }
-
         // GET: Users
+        [Authorize(Roles = "Admin")]
+
         public ActionResult Index()
         {
+            ApplicationDbContext context = new ApplicationDbContext();
+
             if (User.Identity.IsAuthenticated)
             {
-                var user = User.Identity;
-                ViewBag.Name = user.Name;
 
-                ViewBag.displayMenu = "No";
-
-                if (IsAdminUser())
+                if (!IsAdminUser())
                 {
-                    ViewBag.displayMenu = "Yes";
+                    return RedirectToAction("Index", "Home");
                 }
-                return View();
             }
             else
             {
-                ViewBag.Name = "Not Logged IN";
+                return RedirectToAction("Index", "Home");
             }
-            return View();
-        }
 
+            var Users = context.Users.ToList();
+            return View(Users);
+        }
     }
 }

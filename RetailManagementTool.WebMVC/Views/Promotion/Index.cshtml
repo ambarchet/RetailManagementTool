@@ -1,0 +1,64 @@
+﻿@model IEnumerable<RetailManagementTool.Models.Promotion.PromotionListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:#b40505">Promotions</h2>
+<hr />
+<table class="table" style="border:solid;border-color:grey">
+    <tr bgcolor="#204d74" style="color:white">
+        <th>
+            @*
+            @Html.DisplayNameFor(model => model.PromotionId)
+            *@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromotionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromoType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.PromotionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromotionDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromoType)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PromotionId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PromotionId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PromotionId })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.PromotionId })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+<div class="row">
+    <div class="col-md-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("+Add New Promotion", "Create")
+            </p>
+        }
+    </div>
+</div>

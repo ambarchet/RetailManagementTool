@@ -1,0 +1,72 @@
+﻿@model IEnumerable<RetailManagementTool.Models.Department.DepartmentListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:#b40505">Departments</h2>
+<hr />
+<table class="table" style="border:solid;border-color:grey">
+    <tr bgcolor="#204d74" style="color:white">
+        <th>
+            @*
+            @Html.DisplayNameFor(model => model.DepartmentId)
+            *@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentPromoDescription)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.DepartmentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentPromoDescription)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DepartmentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentId }) |
+                    @Html.ActionLink("See Products in This Department", "ListByDepartmentNumber", "Product", new { id = item.DepartmentId }, htmlAttributes: new { @class = "" })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.DepartmentId }) |
+                    @Html.ActionLink("See Related Products", "ListByDepartmentNumber", "Product", new { id = item.DepartmentId }, htmlAttributes: new { @class = "" })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+<div class="row">
+    <div class="col-md-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("+Add New Department", "Create")
+            </p>
+        }
+        </div>
+</div>

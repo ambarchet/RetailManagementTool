@@ -1,0 +1,71 @@
+﻿@model RetailManagementTool.Models.Department.DepartmentDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color:#b40505">Department Details</h2>
+<hr />
+<div class="row">
+    <div class="col-md-7">
+        <dl class="dl-horizontal" style="border:solid;border-color:grey">
+            <dt>
+                @*
+                    @Html.DisplayNameFor(model => model.DepartmentId)
+                *@
+            </dt>
+
+            <dd>
+                @Html.HiddenFor(model => model.DepartmentId)
+            </dd>
+            <br/>
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartmentNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentNumber)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentName)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartmentPromotionName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentPromotionName)
+            </dd>
+            <br />
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-2">
+
+            <p>
+                @Html.ActionLink("Edit Department", "Edit", new { id = Model.DepartmentId })
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                @Html.ActionLink("To Full List of Departments", "Index")
+            </p>
+        </div>
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("To Full List of Departments", "Index")
+        </p>
+    }
+</div>

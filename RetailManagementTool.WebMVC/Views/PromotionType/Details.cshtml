@@ -1,0 +1,56 @@
+﻿@model RetailManagementTool.Models.PromotionType.PromotionTypeDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color:#b40505">Promotion Type Details</h2>
+<hr />
+<div class="row">
+    <div class="col-md-7">
+        <dl class="dl-horizontal" style="border:solid;border-color:grey">
+            <dt>
+                @*
+                    @Html.DisplayNameFor(model => model.PromotionTypeId)
+                *@
+            </dt>
+
+            <dd>
+                @Html.HiddenFor(model => model.PromotionTypeId)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <br />
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-2">
+
+            <p>
+                @Html.ActionLink("Edit Promotion Type", "Edit", new { id = Model.PromotionTypeId })
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                @Html.ActionLink("To Full List of Promotion Types", "Index")
+            </p>
+        </div>
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("To Full List of Promotion Types", "Index")
+        </p>
+    }
+</div>
+

@@ -4,31 +4,52 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="color:#b40505">Size Details</h2>
+<hr />
+<div class="row">
+    <div class="col-md-7">
+        <dl class="dl-horizontal" style="border:solid;border-color:grey">
+            <dt>
+                @*
+                    @Html.DisplayNameFor(model => model.SizeId)
+                *@
+            </dt>
 
-<div>
-    <h4>SizeDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SizeId)
-        </dt>
+            <dd>
+                @Html.HiddenFor(model => model.SizeId)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.SizeName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SizeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SizeName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SizeName)
-        </dd>
-
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.SizeName)
+            </dd>
+            <br />
+        </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SizeId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="row">
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-2">
+
+            <p>
+                @Html.ActionLink("Edit Size", "Edit", new { id = Model.SizeId })
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                @Html.ActionLink("To Full List of Sizes", "Index")
+            </p>
+        </div>
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("To Full List of Sizes", "Index")
+        </p>
+    }
+</div>
