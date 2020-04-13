@@ -28,9 +28,6 @@ namespace RetailManagementTool.WebMVC.Controllers
                 return View(query);
         }
 
-        /*
-        */
-
         //CREATE:GET
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
@@ -94,7 +91,6 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             return View(model);
         }
-
 
         //GET PRODUCTS BY DEPARTMENT ID
         [Authorize(Roles = "Admin, Employee")]
@@ -182,7 +178,6 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             ModelState.AddModelError("", "Your product could not be updated.");
             return View(model);
-
         }
 
         //DELETE
@@ -208,48 +203,5 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }
-            /*
-        //UPDATE: GET
-        public ActionResult EditProductsByDepartment(int id)
-        {
-            // put a dropdown for promotions in here
-
-            var PromotionsList = new List<SelectListItem>();
-            var PromotionQuery = from p in _db.Promotions select p;
-            foreach (var p in PromotionQuery)
-            {
-                PromotionsList.Add(new SelectListItem { Value = p.PromotionId.ToString(), Text = p.PromotionDescription });
-            }
-            ViewBag.Promotions = PromotionsList;
-
-            var service = new ProductService();
-            var listitem = service.GetProductsByDepartment(id);
-
-            var model =
-                new ProductPromoEdit
-                {
-                    ProductsInDepartment = listitem,
-                    PromotionId = id,
-                };
-            return View(model);
-
-
-        }
-        //UPDATE: POST
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditProductsByDepartment(int id, ProductPromoEdit model)
-        {
-
-            var service = new ProductService();
-            var promoedit = service.UpdateListOfProducts(model);
-
-            return View(promoedit);
-
-
-            TempData["SaveResult"] = "Your product was updated.";
-            return RedirectToAction("Index");
-            */

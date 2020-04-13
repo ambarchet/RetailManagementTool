@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 style="color:#b40505">Roles</h2>
+<div class="row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+    <div class ="col-md-6">
+<table class="table" style="border:solid;border-color:grey">
+
+    <tr bgcolor="#204d74" style="color:white">
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -24,11 +24,22 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @*
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                *@
             </td>
         </tr>
     }
 
 </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <p>
+            @Html.ActionLink("+Add New Role", "Create")
+        </p>
+    </div>
+</div>

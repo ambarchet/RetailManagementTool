@@ -4,186 +4,195 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Product Details</h2>
-
-<div>
-    <h4>ProductDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @*
-                @Html.DisplayNameFor(model => model.ProductId)
-            *@
-        </dt>
-
-        <dd>
-            @*
-                @Html.DisplayFor(model => model.ProductId)
-            *@
-            @Html.HiddenFor(model => model.ProductId)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.DepartmentId) *@
-            @Html.HiddenFor(model => model.DepartmentId)
-        </dt>
-
-        <dd>
-            @*
-                @Html.DisplayFor(model => model.DepartmentId)
-            *@
-            @Html.HiddenFor(model => model.DepartmentId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartmentNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DepartmentNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Style)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Style)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SKU)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SKU)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @*
-                @Html.DisplayNameFor(model => model.SizeId)
-            *@
-            @Html.HiddenFor(model => model.SizeId)
-        </dt>
-
-        <dd>
-            @*
-                @Html.DisplayFor(model => model.SizeId)
-            *@
-            @Html.HiddenFor(model => model.SizeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-
-        <dt>
-            @*
-                @Html.DisplayNameFor(model => model.ZoneId)
-            *@
-        </dt>
-
-        <dd>
-            @Html.HiddenFor(model => model.ZoneId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ZoneName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ZoneName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TicketPrice)
-        </dd>
-        @if (Model.DepartmentPromotionDescription == "No Promo")
-        {
-
+<h2 style="color:#b40505">Product Details</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <dl class="dl-horizontal" style="border:solid;border-color:grey">
             <dt>
                 @*
-                    @Html.DisplayNameFor(model => model.PromotionId)
+                    @Html.DisplayNameFor(model => model.ProductId)
                 *@
             </dt>
 
             <dd>
                 @*
-                    @Html.DisplayFor(model => model.PromotionId)
+                    @Html.DisplayFor(model => model.ProductId)
                 *@
-                @Html.HiddenFor(model => model.PromotionId)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.PromotionDescription)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.PromotionDescription)
+                @Html.HiddenFor(model => model.ProductId)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.IndividualSalesPrice)
+                @*@Html.DisplayNameFor(model => model.DepartmentId) *@
+                @Html.HiddenFor(model => model.DepartmentId)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.IndividualSalesPrice)
+                @*
+                    @Html.DisplayFor(model => model.DepartmentId)
+                *@
+                @Html.HiddenFor(model => model.DepartmentId)
             </dd>
-        }
-        else
-        {
+            <br />
             <dt>
-                @Html.DisplayNameFor(model => model.DepartmentPromotionDescription)
+                @Html.DisplayNameFor(model => model.DepartmentNumber)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.DepartmentPromotionDescription)
+                @Html.DisplayFor(model => model.DepartmentNumber)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Style)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Style)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.SKU)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SKU)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Color)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Color)
+            </dd>
+            <hr />
+            <dt>
+                @*
+                    @Html.DisplayNameFor(model => model.SizeId)
+                *@
+                @Html.HiddenFor(model => model.SizeId)
+            </dt>
+
+            <dd>
+                @*
+                    @Html.DisplayFor(model => model.SizeId)
+                *@
+                @Html.HiddenFor(model => model.SizeId)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.SalesPrice)
+                @Html.DisplayNameFor(model => model.Size)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.SalesPrice)
+                @Html.DisplayFor(model => model.Size)
             </dd>
-        }
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+            <hr />
+            <dt>
+                @*
+                    @Html.DisplayNameFor(model => model.ZoneId)
+                *@
+            </dt>
+
+            <dd>
+                @Html.HiddenFor(model => model.ZoneId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ZoneName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ZoneName)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.TicketPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TicketPrice)
+            </dd>
+            <hr />
+            @if (Model.DepartmentPromotionDescription == "No Promo" || Model.DepartmentPromotionDescription == "No Promotion")
+            {
+
+                <dt>
+                    @*
+                        @Html.DisplayNameFor(model => model.PromotionId)
+                    *@
+                </dt>
+
+                <dd>
+                    @*
+                        @Html.DisplayFor(model => model.PromotionId)
+                    *@
+                    @Html.HiddenFor(model => model.PromotionId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PromotionDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PromotionDescription)
+                </dd>
+                <hr />
+                <dt>
+                    @Html.DisplayNameFor(model => model.IndividualSalesPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IndividualSalesPrice)
+                </dd>
+            }
+            else
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.DepartmentPromotionDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DepartmentPromotionDescription)
+                </dd>
+                <hr />
+                <dt>
+                    @Html.DisplayNameFor(model => model.SalesPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SalesPrice)
+                </dd>
+            }
+            <br />
+        </dl>
+    </div>
 </div>
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
-else
-{
-    <p>
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+<div class="row">
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-2">
+
+            <p>
+                @Html.ActionLink("Edit Product", "Edit", new { id = Model.ProductId })
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                @Html.ActionLink("To Full List of Products", "Index")
+            </p>
+        </div>
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("To Full List of Products", "Index")
+        </p>
+    }
+</div>

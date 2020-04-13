@@ -4,37 +4,50 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2 style="color:#b40505">Delete</h2>
+<hr />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>SizeDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SizeId)
-        </dt>
+<h3>Are you sure you want to delete this item?</h3>
+<hr />
+<div class="row">
+    <div>
+        <dl class="col-md-5 dl-horizontal" style="border:ridge;border-color:grey">
+            <dt>
+                @*
+                    @Html.DisplayNameFor(model => model.SizeId)
+                *@
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SizeId)
-        </dd>
+            <dd>
+                @Html.HiddenFor(model => model.SizeId)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.SizeName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SizeName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SizeName)
+            </dd>
+            <br />
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.SizeName)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div>
+        @Html.ActionLink("To Full List of Sizes", "Index")
+    </div>
 </div>

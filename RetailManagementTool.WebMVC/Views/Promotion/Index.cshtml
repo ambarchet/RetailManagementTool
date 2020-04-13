@@ -4,19 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Promotions</h2>
-
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
-
-<table class="table">
-    <tr>
+<h2 style="color:#b40505">Promotions</h2>
+<hr />
+<table class="table" style="border:solid;border-color:grey">
+    <tr bgcolor="#204d74" style="color:white">
         <th>
+            @*
             @Html.DisplayNameFor(model => model.PromotionId)
+            *@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PromotionDescription)
@@ -31,7 +26,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PromotionId)
+                @Html.HiddenFor(modelItem => item.PromotionId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PromotionDescription)
@@ -57,3 +52,13 @@
     }
 
 </table>
+<div class="row">
+    <div class="col-md-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("+Add New Promotion", "Create")
+            </p>
+        }
+    </div>
+</div>

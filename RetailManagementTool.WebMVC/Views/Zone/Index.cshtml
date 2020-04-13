@@ -4,18 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Zones</h2>
-
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
-<table class="table">
-    <tr>
+<h2 style="color:#b40505">Zones</h2>
+<hr />
+<table class="table" style="border:solid;border-color:grey">
+    <tr bgcolor="#204d74" style="color:white">
         <th>
+            @*
             @Html.DisplayNameFor(model => model.ZoneId)
+            *@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ZoneName)
@@ -27,7 +23,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ZoneId)
+                @Html.HiddenFor(modelItem => item.ZoneId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ZoneName)
@@ -50,3 +46,13 @@
     }
 
 </table>
+<div class="row">
+    <div class="col-md-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("+Add New Zone", "Create")
+            </p>
+        }
+    </div>
+</div>

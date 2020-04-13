@@ -61,7 +61,9 @@ namespace RetailManagementTool.Services
                                   }
                                        
                                   );
-                return query.ToList();
+                query.ToList();
+                List<ProductListItem> orderedBySKU = query.OrderBy(e => e.SKU).ToList();
+                return orderedBySKU;
             }
         }
 
@@ -171,7 +173,10 @@ namespace RetailManagementTool.Services
                     }
                     );
 
-                return query.ToList();
+                query.ToList();
+                List<ProductListItem> orderedBySKU = query.OrderBy(e => e.SKU).ToList();
+                return orderedBySKU;
+
             }
         }
 

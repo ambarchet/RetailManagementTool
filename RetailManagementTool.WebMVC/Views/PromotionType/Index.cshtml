@@ -4,18 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Promotion Types</h2>
-
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
-<table class="table">
-    <tr>
+<h2 style="color:#b40505">Promotion Types</h2>
+<hr />
+<table class="table" style="border:solid;border-color:grey">
+    <tr bgcolor="#204d74" style="color:white">
         <th>
-            @Html.DisplayNameFor(model => model.PromotionTypeId)
+            @*
+                @Html.DisplayNameFor(model => model.PromotionTypeId)
+            *@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type)
@@ -25,28 +21,38 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.PromotionTypeId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Type)
-    </td>
-    @if (User.IsInRole("Admin"))
-    {
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.PromotionTypeId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.PromotionTypeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.PromotionTypeId })
-        </td>
-    }
-    else
-    {
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.PromotionTypeId })
-        </td>
-    }
-</tr>
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.PromotionTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PromotionTypeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PromotionTypeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PromotionTypeId })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.PromotionTypeId })
+                </td>
+            }
+        </tr>
     }
 
 </table>
+<div class="row">
+    <div class="col-md-6">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("+Add New Promotion Type", "Create")
+            </p>
+        }
+    </div>
+</div>

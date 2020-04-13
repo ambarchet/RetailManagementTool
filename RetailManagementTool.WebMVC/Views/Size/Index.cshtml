@@ -4,18 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Sizes</h2>
-
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
-<table class="table">
-    <tr>
+<h2 style="color:#b40505">Sizes</h2>
+<hr />
+<table class="table" style="border:solid;border-color:grey">
+    <tr bgcolor="#204d74" style="color:white">
         <th>
+            @*
             @Html.DisplayNameFor(model => model.SizeId)
+            *@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SizeName)
@@ -25,28 +21,37 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.SizeId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SizeName)
-    </td>
-    @if (User.IsInRole("Admin"))
-    {
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.SizeId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.SizeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.SizeId })
-        </td>
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.SizeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SizeName)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SizeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SizeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SizeId })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.SizeId })
+                </td>
+            }
+        </tr>
     }
-    else
-    {
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.SizeId })
-        </td>
-    }
-</tr>
-    }
-
 </table>
+<div class="row">
+    <div class="col-md-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("+Add New Size", "Create")
+            </p>
+        }
+    </div>
+</div>
