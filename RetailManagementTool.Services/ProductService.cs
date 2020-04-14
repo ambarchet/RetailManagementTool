@@ -223,10 +223,8 @@ namespace RetailManagementTool.Services
                     Size = entity.ProductSize.SizeName,
                     ProductName = entity.ProductName,
                     TicketPrice = entity.TicketPrice,
-                    //  PromotionId = CalculatePromotionId(entity.ProductPromotion, entity.ProductDepartment),
                     PromotionId = CalculatePromotionId(entity.ProductPromotion, entity.ProductDepartment),
                     PromotionDescription = CalculatePromotionDescription(entity.ProductPromotion, entity.ProductDepartment),
-                    //PromotionDescription = entity.ProductPromotion.PromotionDescription,
                     SalesPrice = CalculateSalesPrice(entity.TicketPrice, entity.ProductDepartment.DepartmentPromotionId),
                     IndividualSalesPrice = CalculateIndividualSalesPrice(entity.TicketPrice, entity.ProductPromotion),
                     ZoneId = entity.ProductZoneId,
@@ -333,7 +331,8 @@ namespace RetailManagementTool.Services
             }
         }
         
-        private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId) //int promoID
+        //Calculating Department Sales Price
+        private decimal CalculateSalesPrice(decimal ticketPrice, int? promoId)
         {
             var service = new PromotionService();
             var promotion = service.GetPromotionById(promoId);
@@ -353,6 +352,7 @@ namespace RetailManagementTool.Services
             }
         }
 
+        //Calculating Indidividual Sales Price
         private decimal CalculateIndividualSalesPrice(decimal ticketPrice, Promotion promotion)
         {
             {
@@ -373,9 +373,10 @@ namespace RetailManagementTool.Services
             }
         }
 
+
         private int? CalculatePromotionId(Promotion promotion, Department department)
         {
-            switch (department.DepartmentPromotion.PromoType.Type) //PromotionDescription)
+            switch (department.DepartmentPromotion.PromoType.Type) 
 
             {
                 case "No Promo":
@@ -386,9 +387,10 @@ namespace RetailManagementTool.Services
             }
         }
 
+        //Determine whether to use Department's PromotionDescription or Individual Promotion Description
         private string CalculatePromotionDescription(Promotion promotion, Department department)
         {
-            switch (department.DepartmentPromotion.PromoType.Type) //PromotionDescription)
+            switch (department.DepartmentPromotion.PromoType.Type) 
 
             {
                 case "No Promo":
@@ -400,27 +402,3 @@ namespace RetailManagementTool.Services
         }
     }
 }
-
-    
-
-/*
-        //Update List of Products
-        public IEnumerable<ProductListItem> UpdateListOfProducts(ProductPromoEdit model)//IEnumerable<ProductListItem> listOfProducts, int promotionId)  you may need a model that will have listOfProducts and a promotion ID in it.
-        {
-            //foreach through list of products, and change the Promotion.PromotionType.Id to the new promotionId
-            using (var ctx = new ApplicationDbContext())
-            {
-                foreach (var product in model.ProductsInDepartment)//listOfProducts    change to model.ProductsInDepartment)
-                {
-                    var productToChange = ctx.Products.Where(e => e.ProductId == product.ProductId).FirstOrDefault();
-                    if (productToChange != null)
-                    {
-                        productToChange.ProductPromotionId = model.PromotionId;
-                    }
-                }
-                ctx.SaveChanges();
-                return model.ProductsInDepartment;
-            }
-
-        }
-        */
