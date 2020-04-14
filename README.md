@@ -1,4 +1,6 @@
 # RetailManagementTool<h1>RETAILMANAGEMENTTOOL</h1>
+<h2>Published Azure Link</h2>
+https://retailmanagementtool.azurewebsites.net/
 
 <h2>DESCRIPTION</h2>
 
