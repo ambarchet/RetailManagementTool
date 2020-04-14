@@ -49,7 +49,9 @@ namespace RetailManagementTool.Services
                                   }
                                   );
 
-                return query.ToArray();
+                query.ToList();
+                List<DepartmentListItem> orderedByDepartmentNumber = query.OrderBy(e => e.DepartmentNumber).ToList();
+                return orderedByDepartmentNumber;
             }
         }
 

@@ -46,7 +46,9 @@ namespace RetailManagementTool.Services
                                   }
                                   );
 
-                return query.ToArray();
+                query.ToList();
+                List<PromotionTypeListItem> orderedByType = query.OrderBy(e => e.Type).ToList();
+                return orderedByType;
             }
         }
 

@@ -12,6 +12,7 @@ namespace RetailManagementTool.WebMVC.Controllers
     public class ProductController : Controller
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: Department
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index(string SKU)

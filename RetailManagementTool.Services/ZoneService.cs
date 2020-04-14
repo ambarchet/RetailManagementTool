@@ -45,7 +45,9 @@ namespace RetailManagementTool.Services
                                   }
                                   );
 
-                return query.ToArray();
+                query.ToList();
+                List<ZoneListItem> orderedByName = query.OrderBy(e => e.ZoneName).ToList();
+                return orderedByName;
             }
         }
 

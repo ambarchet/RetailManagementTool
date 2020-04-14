@@ -33,7 +33,7 @@ namespace RetailManagementTool.Services
         }
 
         //GET ALL
-        public IEnumerable<PromotionListItem> GetPromotions()
+        public List<PromotionListItem> GetPromotions()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,9 +48,9 @@ namespace RetailManagementTool.Services
                                   }
                                   );
 
-                return query.ToArray();
-
-
+                query.ToList();
+                List<PromotionListItem> orderedByDescription = query.OrderBy(e => e.PromotionDescription).ToList();
+                return orderedByDescription;
             }
         }
 
