@@ -82,7 +82,7 @@
 
 <h2>Usage</h2>
 
-Through the Startup.cs class, two types of Roles get seeded when you run this program (Admin and Employee).
+<p>Through the Startup.cs class, two types of Roles get seeded when you run this program (Admin and Employee).
 There is one seeded Admin that can be used for testing:
 <ul>
   <li>UserName: Master</li>
@@ -93,7 +93,7 @@ There is one seeded Admin that can be used for testing:
  
  Employee's access and ability to see certain Views and hyperlinks is limited to only seeing List and Details pages for Product, Department, Zone, Size, Promotion, and PromotionType. Employees cannot edit, create or delete anything.
  
- The program also is seeded with Sizes, Zones, and PromotionTypes.
+ The program also is seeded with Sizes, Zones, and PromotionTypes.</p>
  
  
  <h2>If Cloning For Testing</h2>
