@@ -95,7 +95,7 @@ There is one seeded Admin that can be used for testing:
  
  The program also is seeded with Sizes, Zones, and PromotionTypes.
  
- <p>****IF CLONING FOR TESTING****</p>
+ ****<p>****IF CLONING FOR TESTING****</p>****
  Upon cloning, a promotion (using a seeded PromotionType) and a department (using a newly created promotion) will have to be created  before a user can create a product.
  <ul>
   <li>Create a Promotion, using a seeded PromotionType.</li>
