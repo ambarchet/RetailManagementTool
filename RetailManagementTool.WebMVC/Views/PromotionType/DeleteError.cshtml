@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "DeleteError";
+}
+
+<h2 style="color:#b40505">@ViewBag.Title</h2>
+<hr />
+<br />
+<br />
+
+<h4 style="color:#b40505">This Promotion Type could not be deleted beacause it is currently being used by a Promotion. Make sure this Promotion Type is removed from all Promotions before attempting to delete it.</h4>
+<hr />
+<br />
+<br />
+@Html.ActionLink("To Full List of Promotion Types", "Index")
+

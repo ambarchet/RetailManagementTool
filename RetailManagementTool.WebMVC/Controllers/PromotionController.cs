@@ -129,11 +129,34 @@ namespace RetailManagementTool.WebMVC.Controllers
         {
             var service = new PromotionService();
 
-            service.DeletePromotion(id);
+            string deleteResponse = service.DeletePromotion(id);
 
-            TempData["SaveResult"] = "Your promotion was deleted";
+            switch (deleteResponse)
+            {
+                case "This Promotion is used by a Product":
+                    return View("DeleteErrorP");
 
-            return RedirectToAction("Index");
+                case "This Promotion is used by a Department":
+                    return View("DeleteErrorD");
+                default:
+                    TempData["SaveResult"] = "Your promotion was deleted";
+
+                    return RedirectToAction("Index");
+            }
         }
+
+        //DeleteError Product-Related
+        public ActionResult DeleteErrorP()
+        {
+            return View();
+        }
+
+        //DeleteError Department-Related
+        public ActionResult DeleteErrorD()
+        {
+            return View();
+        }
+
+
     }
 }

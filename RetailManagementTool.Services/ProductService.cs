@@ -67,7 +67,7 @@ namespace RetailManagementTool.Services
             }
         }
 
-        //GET ALL
+        //GET BY SKU
         public IEnumerable<ProductListItem> GetProductBySKU(string SKU)
         {
             using (var ctx = new ApplicationDbContext())
@@ -88,6 +88,119 @@ namespace RetailManagementTool.Services
                 return query.ToList();                  
             }
         }
+
+        //GET BY ZONE
+        public IEnumerable<ProductEditDetail> GetProductByZone(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Products.Where(e => e.ProductZoneId == id).Select(e => new ProductEditDetail
+                    {
+                        ProductId = e.ProductId,
+                        DepartmentId = e.ProductDepartmentId,
+                        DepartmentNumber = e.ProductDepartment.DepartmentNumber,
+                        Style = e.Style,
+                        SKU = e.SKU,
+                        ProductName = e.ProductName,
+                        Color = e.Color,
+                        SizeId = e.ProductSizeId,
+                        Size = e.ProductSize.SizeName,
+                        TicketPrice = e.TicketPrice,
+                        PromotionId = e.ProductPromotionId,
+                        PromotionDescription = e.ProductPromotion.PromotionDescription,
+                        ZoneId = e.ProductZoneId,
+                        ZoneName = e.ProductZone.ZoneName,
+                    });
+
+                return query.ToList();
+            }
+        }
+
+        //GET BY SIZE
+        public IEnumerable<ProductEditDetail> GetProductBySize(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Products.Where(e => e.ProductSizeId == id).Select(e => new ProductEditDetail
+                    {
+                        ProductId = e.ProductId,
+                        DepartmentId = e.ProductDepartmentId,
+                        DepartmentNumber = e.ProductDepartment.DepartmentNumber,
+                        Style = e.Style,
+                        SKU = e.SKU,
+                        ProductName = e.ProductName,
+                        Color = e.Color,
+                        SizeId = e.ProductSizeId,
+                        Size = e.ProductSize.SizeName,
+                        TicketPrice = e.TicketPrice,
+                        PromotionId = e.ProductPromotionId,
+                        PromotionDescription = e.ProductPromotion.PromotionDescription,
+                        ZoneId = e.ProductZoneId,
+                        ZoneName = e.ProductZone.ZoneName,
+                    });
+
+                return query.ToList();
+            }
+        }
+
+        //GET Edit Detail BY Department
+        public IEnumerable<ProductEditDetail> GetProductEditDetailByDepartment(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Products.Where(e => e.ProductDepartmentId == id).Select(e => new ProductEditDetail
+                    {
+                        ProductId = e.ProductId,
+                        DepartmentId = e.ProductDepartmentId,
+                        DepartmentNumber = e.ProductDepartment.DepartmentNumber,
+                        Style = e.Style,
+                        SKU = e.SKU,
+                        ProductName = e.ProductName,
+                        Color = e.Color,
+                        SizeId = e.ProductSizeId,
+                        Size = e.ProductSize.SizeName,
+                        TicketPrice = e.TicketPrice,
+                        PromotionId = e.ProductPromotionId,
+                        PromotionDescription = e.ProductPromotion.PromotionDescription,
+                        ZoneId = e.ProductZoneId,
+                        ZoneName = e.ProductZone.ZoneName,
+                    });
+
+                return query.ToList();
+            }
+        }
+
+        //GET BY PROMOTION
+        public IEnumerable<ProductEditDetail> GetProductByPromotion(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Products.Where(e => e.ProductPromotionId == id).Select(e => new ProductEditDetail
+                    {
+                        ProductId = e.ProductId,
+                        DepartmentId = e.ProductDepartmentId,
+                        DepartmentNumber = e.ProductDepartment.DepartmentNumber,
+                        Style = e.Style,
+                        SKU = e.SKU,
+                        ProductName = e.ProductName,
+                        Color = e.Color,
+                        SizeId = e.ProductSizeId,
+                        Size = e.ProductSize.SizeName,
+                        TicketPrice = e.TicketPrice,
+                        PromotionId = e.ProductPromotionId,
+                        PromotionDescription = e.ProductPromotion.PromotionDescription,
+                        ZoneId = e.ProductZoneId,
+                        ZoneName = e.ProductZone.ZoneName,
+                    });
+
+                return query.ToList();
+            }
+        }
+
 
 
         //GET BY ID

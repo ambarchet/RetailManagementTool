@@ -130,11 +130,21 @@ namespace RetailManagementTool.WebMVC.Controllers
         {
             var service = new DepartmentService();
 
-            service.DeleteDepartment(id);
+            string deleteResponse = service.DeleteDepartment(id);
 
+            if (deleteResponse == "Department successfully deleted")
+            {
             TempData["SaveResult"] = "Your department was deleted";
-
             return RedirectToAction("Index");
+            }
+
+            return View("DeleteError");
+        }
+
+        //DeleteError
+        public ActionResult DeleteError()
+        {
+            return View();
         }
 
     }

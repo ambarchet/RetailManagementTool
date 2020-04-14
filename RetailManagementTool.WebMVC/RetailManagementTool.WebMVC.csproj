@@ -277,6 +277,12 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\PromotionType\DeleteError.cshtml" />
+    <Content Include="Views\Zone\DeleteError.cshtml" />
+    <Content Include="Views\Size\DeleteError.cshtml" />
+    <Content Include="Views\Department\DeleteError.cshtml" />
+    <Content Include="Views\Promotion\DeleteErrorP.cshtml" />
+    <Content Include="Views\Promotion\DeleteErrorD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

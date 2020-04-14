@@ -10,6 +10,8 @@ namespace RetailManagementTool.WebMVC.Controllers
 {
     public class PromotionTypeController : Controller
     {
+
+
         // GET: PromotionType
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
@@ -107,12 +109,21 @@ namespace RetailManagementTool.WebMVC.Controllers
         public ActionResult DeletePost(int id)
         {
             var service = new PromotionTypeService();
+            string deleteResponse = service.DeletePromotionType(id);
 
-            service.DeletePromotionType(id);
-
+            if (deleteResponse == "Promotion Type successfullly deleted")
+            {
             TempData["SaveResult"] = "Your promotion type was deleted";
-
             return RedirectToAction("Index");
+
+            }
+            return View("DeleteError");
+        }
+
+        //DeleteError
+        public ActionResult DeleteError()
+        {
+            return View();
         }
     }
 }

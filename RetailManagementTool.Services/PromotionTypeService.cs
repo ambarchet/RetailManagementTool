@@ -1,4 +1,5 @@
 ﻿using RetailManagementTool.Data;
+using RetailManagementTool.Models.Promotion;
 using RetailManagementTool.Models.PromotionType;
 using System;
 using System.Collections.Generic;
@@ -79,18 +80,31 @@ namespace RetailManagementTool.Services
         }
 
         //DELETE
-        public bool DeletePromotionType(int id)
+        public string DeletePromotionType(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.PromotionTypes.Single(e => e.PromotionTypeId == id);
 
-                ctx.PromotionTypes.Remove(entity);
+                var service = new PromotionService();
+                var query = service.GetPromotionByPromoType(id);
+                if (query.ToList().Count() == 0)
+                {
+                    try
+                    {
+                            ctx.PromotionTypes.Remove(entity);
+                            ctx.SaveChanges();
+                            return "Promotion Type successfullly deleted";
+                    }
+                    catch (Exception s)
+                    {
 
-                return ctx.SaveChanges() == 1;
+                        return s.Message;
+                    }
+                }
+                return "Unable to delete this Promotion Type";
             }
         }
     }
-
 }
 

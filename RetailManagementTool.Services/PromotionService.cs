@@ -67,8 +67,30 @@ namespace RetailManagementTool.Services
                     PromoTypeId = entity.PromoTypeId,
                     PromoType = entity.PromoType.Type,
                     PromotionValue = entity.PromoValue
-                    
+
                 };
+            }
+        }
+
+        //GET BY PROMOTYPEID
+        public IEnumerable<PromotionDetail> GetPromotionByPromoType(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Promotions
+                    .Where(e => e.PromoTypeId == id)
+                    .Select(e => new PromotionDetail
+                    {
+                        PromotionId = e.PromotionId,
+                        PromotionDescription = e.PromotionDescription,
+                        PromoTypeId = e.PromoTypeId,
+                        PromoType = e.PromoType.Type,
+                        PromotionValue = e.PromoValue
+                    }
+                                  );
+                return query.ToList();
             }
         }
 
@@ -90,16 +112,42 @@ namespace RetailManagementTool.Services
         }
 
         //DELETE
-        public bool DeletePromotion(int id)
+        public string DeletePromotion(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Promotions.Single(e => e.PromotionId == id);
 
-                ctx.Promotions.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
+                var service = new ProductService();
+                var query = service.GetProductByPromotion(id);
+                if (query.ToList().Count() >= 1)
+                {
+                    return "This Promotion is used by a Product";
+                }
+                try
+                {
+                    var dService = new DepartmentService();
+                    var list = dService.GetDepartmentsByPromotion(id);
+                    if (list.ToList().Count() == 0)
+                    {
+                        try
+                        {
+                            ctx.Promotions.Remove(entity);
+                            ctx.SaveChanges();
+                            return "Promotion successfully deleted";
+                        }
+                        catch (Exception s)
+                        {
+                            return s.Message;
+                        }
+                    }
+                }
+                catch (Exception n)
+                {
+                return n.Message;
+                }
             }
+                    return "This Promotion is used by a Department";
         }
 
     }

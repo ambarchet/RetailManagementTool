@@ -53,6 +53,31 @@ namespace RetailManagementTool.Services
             }
         }
 
+        //GET BY PROMOTION
+        public IEnumerable<DepartmentDetail> GetDepartmentsByPromotion(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Departments
+                    .Where(e => e.DepartmentPromotionId == id)
+                    .Select(e => new DepartmentDetail
+                    {
+                        DepartmentId = e.DepartmentId,
+                        DepartmentNumber = e.DepartmentNumber,
+                        DepartmentName = e.DepartmentName,
+                        DepartmentPromotionId = e.DepartmentPromotionId,
+                        DepartmentPromotionName = e.DepartmentPromotion.PromotionDescription
+                    }
+                                  );
+
+                return query.ToList();
+            }
+        }
+
+
+
         //GET BY ID
         public DepartmentDetail GetDepartmentById(int id)
         {
@@ -83,22 +108,35 @@ namespace RetailManagementTool.Services
                 entity.DepartmentNumber = model.DepartmentNumber;
                 entity.DepartmentName = model.DepartmentName;
                 entity.DepartmentPromotionId = model.DepartmentPromotionId;
-                
+
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
         //DELETE
-        public bool DeleteDepartment(int id)
+        public string DeleteDepartment(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Departments.Single(e => e.DepartmentId == id);
 
-                ctx.Departments.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
+                var service = new ProductService();
+                var query = service.GetProductEditDetailByDepartment(id);
+                if (query.ToList().Count() == 0)
+                {
+                    try
+                    {
+                        ctx.Departments.Remove(entity);
+                        ctx.SaveChanges();
+                        return "Department successfully deleted";
+                    }
+                    catch (Exception s)
+                    {
+                        return s.Message;
+                    }
+                }
+                return "Unable to delete this Department";
             }
         }
     }

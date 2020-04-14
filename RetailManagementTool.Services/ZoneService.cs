@@ -79,17 +79,29 @@ namespace RetailManagementTool.Services
         }
 
         //DELETE
-        public bool DeleteZone(int id)
+        public string DeleteZone(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Zones.Single(e => e.ZoneId == id);
 
-                ctx.Zones.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
+                var service = new ProductService();
+                var query = service.GetProductByZone(id);
+                if (query.ToList().Count() == 0)
+                {
+                    try
+                    {
+                        ctx.Zones.Remove(entity);
+                        ctx.SaveChanges();
+                        return "Zone successfully deleted";
+                    }
+                    catch (Exception s)
+                    {
+                        return s.Message;
+                    }
+                }
+                return "Unable to delete this Zone";
             }
         }
-
     }
 }

@@ -203,5 +203,12 @@ namespace RetailManagementTool.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //DeleteError
+        public ActionResult DeleteError()
+        {
+            return View();
+        }
+
     }
 }

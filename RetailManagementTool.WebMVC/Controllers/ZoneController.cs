@@ -108,11 +108,22 @@ namespace RetailManagementTool.WebMVC.Controllers
         {
             var service = new ZoneService();
 
-            service.DeleteZone(id);
+            string deleteResponse = service.DeleteZone(id);
 
+            if (deleteResponse == "Zone successfully deleted")
+            {
             TempData["SaveResult"] = "Your zone was deleted";
-
             return RedirectToAction("Index");
+            }
+
+            return View("DeleteError");
         }
+
+        //DeleteError
+        public ActionResult DeleteError()
+        {
+            return View();
+        }
+
     }
 }

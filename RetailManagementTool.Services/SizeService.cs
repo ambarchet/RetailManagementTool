@@ -82,15 +82,28 @@ namespace RetailManagementTool.Services
         }
 
         //DELETE
-        public bool DeleteSize(int id)
+        public string DeleteSize(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Sizes.Single(e => e.SizeId == id);
 
-                ctx.Sizes.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
+                var service = new ProductService();
+                var query = service.GetProductBySize(id);
+                if (query.ToList().Count() == 0)
+                {
+                    try
+                    {
+                        ctx.Sizes.Remove(entity);
+                        ctx.SaveChanges();
+                        return "Size successfully deleted";
+                    }
+                    catch (Exception s)
+                    {
+                        return s.Message;
+                    }
+                }
+                return "Unable to delete this Size";
             }
         }
     }

@@ -108,11 +108,22 @@ namespace RetailManagementTool.WebMVC.Controllers
         {
             var service = new SizeService();
 
-            service.DeleteSize(id);
+            string deleteResponse = service.DeleteSize(id);
 
+            if (deleteResponse == "Size successfully deleted")
+            {
             TempData["SaveResult"] = "Your size was deleted";
-
             return RedirectToAction("Index");
+            }
+
+            return View("DeleteError");
         }
+
+        //DeleteError
+        public ActionResult DeleteError()
+        {
+            return View();
+        }
+
     }
 }
